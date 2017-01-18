@@ -12,7 +12,8 @@
 /**
    enum-string pair for the language.
  */
-struct toylang_pair {
+struct toylang_pair
+{
   enum toylang lang_token;
   const char      *str;
 };
@@ -47,8 +48,10 @@ struct toylang_pair lang_table[] = {
 };
 
 
-struct toylang_pair *get_lang_table_pair(enum toylang token) {
-  if (token > ToyLangWhile || token < ToyLangBoolean) {
+struct toylang_pair *get_lang_table_pair(enum toylang token)
+{
+  if (token > ToyLangWhile || token < ToyLangBoolean)
+  {
     debug("Improper enum => %d which is out of the bounds of ToyboxLang\n", token);
     return (void *)0;
   }
