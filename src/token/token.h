@@ -9,7 +9,7 @@
    Toy Language lexemes. These are used to return the token to 
    the parser.
  */
-enum ToyboxLang {
+enum toylang {
   ToyLangBoolean = 0,
   ToyLangBreak,
   ToyLangClass,

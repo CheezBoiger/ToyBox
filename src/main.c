@@ -10,11 +10,11 @@
 
 int main(int c, char *args[])
 {
-  enum ToyboxLang token = (enum ToyboxLang)yylex();
-  while ((int)token)
+  enum toylang token = yylex();
+  while (token)
   {
     printf("%s", get_lang_table_pair(token)->str);
-    token = (enum ToyboxLang)yylex();
+    token = yylex();
   }
   return 0;
 }

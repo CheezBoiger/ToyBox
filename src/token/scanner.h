@@ -12,8 +12,8 @@
 /**
    enum-string pair for the language.
  */
-struct ToyLangPair {
-  enum ToyboxLang lang_token;
+struct toylang_pair {
+  enum toylang lang_token;
   const char      *str;
 };
 
@@ -23,7 +23,7 @@ struct ToyLangPair {
 /**
    Language table, holding information of Language.
  */
-struct ToyLangPair lang_table[] = {
+struct toylang_pair lang_table[] = {
   LANG_KEY(ToyLangBoolean,    "_boolean"),
   LANG_KEY(ToyLangBreak,      "_break"),
   LANG_KEY(ToyLangClass,      "_class"),
@@ -47,11 +47,11 @@ struct ToyLangPair lang_table[] = {
 };
 
 
-struct ToyLangPair *get_lang_table_pair(enum ToyboxLang token) {
-  if ((int)token > (int)ToyLangWhile || (int)token < (int)ToyLangBoolean) {
-    debug("Improper enum => %d which is out of the bounds of ToyboxLang\n", (int)token);
+struct toylang_pair *get_lang_table_pair(enum toylang token) {
+  if (token > ToyLangWhile || token < ToyLangBoolean) {
+    debug("Improper enum => %d which is out of the bounds of ToyboxLang\n", token);
     return (void *)0;
   }
-  return &lang_table[(unsigned int)token];
+  return &lang_table[token];
 }
 #endif // __TOYBOX_SCANNER_H
