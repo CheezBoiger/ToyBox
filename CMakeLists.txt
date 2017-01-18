@@ -22,12 +22,16 @@ add_definitions(-DTOYBOX_DEBUG)
 set(TOYBOX_SRC_DIR ${CMAKE_SOURCE_DIR}/src/)
 set(TOYBOX_DEBUGGER_DIR ${TOYBOX_SRC_DIR}/debugger/)
 set(TOYBOX_TOKEN_DIR ${TOYBOX_SRC_DIR}/token/)
+set(TOYBOX_LEX_DIR ${TOYBOX_SRC_DIR}/lex/)
 
 
 set(TOYBOX_SRC
   ${TOYBOX_SRC_DIR}/main.c
   ${TOYBOX_DEBUGGER_DIR}/debug.h
+  ${TOYBOX_TOKEN_DIR}/token.h
   ${TOYBOX_TOKEN_DIR}/scanner.h
+  ${TOYBOX_LEX_DIR}/lexical.h
+  ${TOYBOX_LEX_DIR}/lex.yy.c
 )
 
 

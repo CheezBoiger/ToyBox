@@ -1,38 +1,12 @@
-/*
-  Copyright (c) Mario Garcia, Under the GPL v2 License.
+/**
+   Copyright (c) Mario Garcia, Under the GNU Public v2 License.
  */
 #ifndef __TOYBOX_SCANNER_H
 #define __TOYBOX_SCANNER_H
 
+
+#include <token/token.h>
 #include <debugger/debug.h>
-
-
-/**
-   Toy Language lexemes. These are used to return the token to 
-   the parser.
- */
-enum ToyboxLang {
-  ToyLangBoolean = 0,
-  ToyLangBreak,
-  ToyLangClass,
-  ToyLangDouble,
-  ToyLangElse,
-  ToyLangExtends,
-  ToyLangFalse,
-  ToyLangFor,
-  ToyLangIf,
-  ToyLangImplements,
-  ToyLangInt,
-  ToyLangInterface,
-  ToyLangNewArray,
-  ToyLangPrintln,
-  ToyLangReadin,
-  ToyLangReturn,
-  ToyLangString,
-  ToyLangTrue,
-  ToyLangVoid,
-  ToyLangWhile
-};
 
 
 /**
@@ -46,6 +20,9 @@ struct ToyLangPair {
 
 #define LANG_KEY(lang, str) { lang, str }
 
+/**
+   Language table, holding information of Language.
+ */
 struct ToyLangPair lang_table[] = {
   LANG_KEY(ToyLangBoolean,    "_boolean"),
   LANG_KEY(ToyLangBreak,      "_break"),
@@ -57,6 +34,16 @@ struct ToyLangPair lang_table[] = {
   LANG_KEY(ToyLangFor,        "_for"),
   LANG_KEY(ToyLangIf,         "_if"),
   LANG_KEY(ToyLangImplements, "_implements"),
+  LANG_KEY(ToyLangInt,        "_int"),
+  LANG_KEY(ToyLangInterface,  "_interface"),
+  LANG_KEY(ToyLangNewArray,   "_newarray"),
+  LANG_KEY(ToyLangPrintln,    "_println"),
+  LANG_KEY(ToyLangReadln,     "_readln"),
+  LANG_KEY(ToyLangReturn,     "_return"),
+  LANG_KEY(ToyLangString,     "_string"),
+  LANG_KEY(ToyLangTrue,       "_true"),
+  LANG_KEY(ToyLangVoid,       "_void"),
+  LANG_KEY(ToyLangWhile,      "_while")
 };
 
 
@@ -67,5 +54,4 @@ struct ToyLangPair *get_lang_table_pair(enum ToyboxLang token) {
   }
   return &lang_table[(unsigned int)token];
 }
-
 #endif // __TOYBOX_SCANNER_H
