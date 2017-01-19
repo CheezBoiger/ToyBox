@@ -30,6 +30,34 @@ Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 "void"         return (int)ToyLangVoid;
 "while"        return (int)ToyLangWhile;
 
+"+"            return (int)ToyLangPlus;
+"-"            return (int)ToyLangMinus;
+"*"            return (int)ToyLangMultiplication;
+"/"            return (int)ToyLangDivision;
+"%"            return (int)ToyLangMod;
+"<"            return (int)ToyLangLess;
+"<="           return (int)ToyLangLessEqual;
+">"            return (int)ToyLangGreater;
+">="           return (int)ToyLangGreaterEqual;
+"=="           return (int)ToyLangEqual;
+"!="           return (int)ToyLangNotEqual;
+"&&"           return (int)ToyLangAnd;
+"||"           return (int)ToyLangOr;
+"!"            return (int)ToyLangNot;
+"="            return (int)ToyLangAssignOp;
+";"            return (int)ToyLangSemicolon;
+","            return (int)ToyLangComma;
+"."            return (int)ToyLangPeriod;
+"("            return (int)ToyLangLeftParen;
+")"            return (int)ToyLangRightParen;
+"["            return (int)ToyLangLeftBracket;
+"]"            return (int)ToyLangRightBracket;
+"{"            return (int)ToyLangLeftBrace;
+"}"            return (int)ToyLangRightBrace;
+
+
+\".*\"         return (int)ToyLangStringConstant;
+
 
 %%
 
