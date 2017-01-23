@@ -10,7 +10,7 @@
    the parser.
  */
 enum toylang {
-  ToyLangBoolean = 0,
+  ToyLangBoolean = 1,
   ToyLangBreak,
   ToyLangClass,
   ToyLangDouble,

@@ -84,7 +84,7 @@ struct toylang_pair *get_lang_table_pair(enum toylang token)
     debug("Improper enum => %d which is out of the bounds of ToyboxLang\n", token);
     return (void *)0;
   }
-  return &lang_table[token];
+  return &lang_table[token-1];
 }
 
 

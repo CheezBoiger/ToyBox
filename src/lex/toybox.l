@@ -61,6 +61,8 @@ Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 [0-9]*"."[0-9]*|[0-9]*"."[0-9]*[e|E][-|+]*[0-9]+ return (int)ToyLangDoubleConstant;
 _*[a-zA-Z]+[a-zA-Z0-9]*                          return (int)ToyLangId;
 
+[/][*][^*]*[*]+([^*/][^*]*[*]+)*[/]    { };
+"//".*                                 { };
 
 %%
 

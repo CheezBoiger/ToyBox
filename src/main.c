@@ -13,8 +13,9 @@ int main(int c, char *args[])
   enum toylang token = yylex();
   while (token)
   {
-    printf("%s", get_lang_table_pair(token)->str);
+    debug("%s", get_lang_table_pair(token)->str);
     token = yylex();
   }
+  debug("\n");
   return 0;
 }
