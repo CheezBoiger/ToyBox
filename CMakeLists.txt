@@ -6,12 +6,12 @@ cmake_minimum_required(VERSION 2.8.11)
 
 project("ToyBox_Compiler")
 
-set(TOYBOX_NAME "Toybox" CACHE STRING "Toybox compiler name")
+set(TOYBOX_NAME "toybox" CACHE STRING "Toybox compiler name")
 set(TOYBOX_VERSION "v0.1" CACHE STRING "Toybox version")
 
 
 
-set(TOYBOX_FINAL "${TOYBOX_NAME}_${TOYBOX_VERSION}")
+set(TOYBOX_FINAL "${TOYBOX_NAME}")
 
 
 include_directories(SYSTEM ${CMAKE_CURRENT_SOURCE_DIR}/src/)
