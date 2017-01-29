@@ -14,7 +14,10 @@ set(TOYBOX_VERSION "v0.1" CACHE STRING "Toybox version")
 set(TOYBOX_FINAL "${TOYBOX_NAME}")
 
 
-include_directories(SYSTEM ${CMAKE_CURRENT_SOURCE_DIR}/src/)
+include_directories(SYSTEM
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/
+)
+
 
 add_definitions(-DTOYBOX_DEBUG)
 

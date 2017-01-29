@@ -41,7 +41,7 @@ struct trie {
 /**
    Initializes the trie structure
  */
-err_t trie_init(struct trie *tree);
+enum err_t trie_init(struct trie *tree);
 
 
 /**
@@ -52,7 +52,7 @@ err_t trie_init(struct trie *tree);
    @return err_success (1) on successfully inserting, otherwise
    err_fail (0) is returned.
  */
-err_t trie_insert(struct trie *tree, int8 *str);
+enum err_t trie_insert(struct trie *tree, int8 *str);
 
 
 /**
@@ -63,7 +63,7 @@ err_t trie_insert(struct trie *tree, int8 *str);
    @return err_success on successfully removing, otherwise
    err_fail (0) is returned.
  */
-err_t trie_remove(struct trie *tree, int8 *str);
+enum err_t trie_remove(struct trie *tree, int8 *str);
 
 
 /**
@@ -84,7 +84,7 @@ int32 trie_lookup(struct trie *tree, int8 *str);
    @return err_success (1) if the tree was successfully cleaned up and destroyed,
    otherwise err_fail (0) if the trie could not successfully cleanup and destoy. 
  */
-err_t trie_destroy(struct trie *tree); 
+enum err_t trie_destroy(struct trie *tree); 
 
 
 #endif // __TOYBOX_TRIE_H
