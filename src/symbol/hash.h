@@ -5,7 +5,12 @@
 #define __TOYBOX_HASH_H
 
 
-unsigned int
-toy_hash(void *value, unsigned int size);
+
+#include <err/types.h>
+
+
+uint64 toy_hash(void *value, unsigned int size);
+
+
 
 #endif // __TOYBOX_HASH_H

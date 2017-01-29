@@ -3,9 +3,12 @@
  */
 #include <symbol/hash.h>
 
+// Includeing xxhash for the noncryptographic hash.
+#define XXH_PRIVATE_API
+#include <symbol/xxhash.h>
 
-unsigned int
-reverse_byte(char *byte)
+
+uint32 reverse_byte(char *byte)
 {
   unsigned int hash = 0;
   hash |= (*byte & 0x80) >> 7;
@@ -23,16 +26,11 @@ reverse_byte(char *byte)
 /*
   Quick and simple hash.
  */
-unsigned int
+uint64
 toy_hash(void *value, unsigned int size)
 {
   // Still workin on it.
-  unsigned int hash, count = 0;
-  while (count < size)
-  {
-    char val = *(char *)(value+count);
-    hash = reverse_byte(&val);
-  }
-  
+  uint64 hash = 0;
+  hash = XXH64(value, size, 11); 
   return hash;
 }

@@ -24,6 +24,7 @@ set(TOYBOX_DEBUGGER_DIR ${TOYBOX_SRC_DIR}/debugger/)
 set(TOYBOX_TOKEN_DIR ${TOYBOX_SRC_DIR}/token/)
 set(TOYBOX_LEX_DIR ${TOYBOX_SRC_DIR}/lex/)
 set(TOYBOX_SYMBOL_DIR ${TOYBOX_SRC_DIR}/symbol/)
+set(TOYBOX_ERR_DIR ${TOYBOX_SRC_DIR}/err/)
 
 
 set(TOYBOX_SRC
@@ -39,6 +40,9 @@ set(TOYBOX_SRC
   ${TOYBOX_SYMBOL_DIR}/map.c
   ${TOYBOX_SYMBOL_DIR}/hash.h
   ${TOYBOX_SYMBOL_DIR}/hash.c
+  ${TOYBOX_SYMBOL_DIR}/xxhash.h
+  ${TOYBOX_SYMBOL_DIR}/xxhash.c
+  ${TOYBOX_ERR_DIR}/types.h
 )
 
 
