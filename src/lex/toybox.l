@@ -58,7 +58,7 @@ Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 
 \".*\"                                           return (int)ToyLangStringConstant;
 0[x|X][a-fA-F0-9]+|[0-9]+                        return (int)ToyLangIntConstant;
-[0-9]*"."[0-9]*|[0-9]*"."[0-9]*[e|E][-|+]*[0-9]+ return (int)ToyLangDoubleConstant;
+[0-9][0-9]*"."[0-9]*|[0-9][0-9]*"."[0-9]*[e|E][-|+]*[0-9]+ return (int)ToyLangDoubleConstant;
 _*[a-zA-Z]+[a-zA-Z0-9]*                          return (int)ToyLangId;
 
 [/][*][^*]*[*]+([^*/][^*]*[*]+)*[/]    { };
