@@ -35,7 +35,7 @@ int charToPosition(char letter)
 }
 
 //resize the symbol and next dynmaic arrays
-enum err_t trie_resize(struct trieArray *trieArr, int size)
+enum err_t trieResize(struct trieArray *trieArr, int size)
 {
     char *arrayChar = calloc(1, sizeof(char) * size);
     int *arrayInt = calloc(1, sizeof(int) * size);
@@ -87,6 +87,14 @@ enum err_t trieInit(struct trieArray  *trieArr)
 }
 
 
+enum err_t trieCurrentIncrement(struct trieArray *trieArr)
+{
+    trieArr->current++;//increment total of letters 
+    if (trieArr->current >= trieArr->maxSize)//resize
+    {
+        trieResize(trieArr, trieArr->maxSize * 2);
+    }
+}
 
 /**
 Inserts a value to the trie structure.
@@ -122,7 +130,8 @@ enum err_t trieInsert(struct trieArray  *trieArr, char *str)
         {
             trieArr->symbols[position] = str[i];
             i++;//increment string letter;
-            trieArr->current++;//increment total of letters 
+            trieCurrentIncrement(trieArr);//increment total of letters 
+            
             position = trieArr->current;
              
             if (i >= strlen(str))//end of word
@@ -132,7 +141,7 @@ enum err_t trieInsert(struct trieArray  *trieArr, char *str)
                     position = trieArr->next[position];//insert termination
                 }
                 trieArr->symbols[position] = '*';
-                trieArr->current++;
+                trieCurrentIncrement(trieArr);
             }
         }
         else//symbol in place find our new position
