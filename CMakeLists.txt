@@ -35,6 +35,7 @@ set(TOYBOX_SRC
   ${TOYBOX_DEBUGGER_DIR}/debug.h
   ${TOYBOX_TOKEN_DIR}/token.h
   ${TOYBOX_TOKEN_DIR}/scanner.h
+  ${TOYBOX_TOKEN_DIR}/scanner.c
   ${TOYBOX_LEX_DIR}/lexical.h
   ${TOYBOX_LEX_DIR}/lex.yy.c
   ${TOYBOX_SYMBOL_DIR}/trieArray.h
