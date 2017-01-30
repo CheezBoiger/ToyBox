@@ -30,7 +30,7 @@ Inserts a value to the trie structure.
 @return err_success (1) on successfully inserting, otherwise
 err_fail (0) is returned.
 */
-enum err_t trieInsert(struct trieArray  *trieArr, char *str);
+enum err_t trieInsert(struct trieArray  *trieArr, const char *str);
 
 
 /**
@@ -41,7 +41,7 @@ Looks up a given string that is inside the trie structure.
 @return 1 if the given str string param was found in the trie,
 otherwise 0 if the str string param was not found.
 */
-int trieLookup(struct trieArray  *trieArr, char *str);
+int trieLookup(struct trieArray  *trieArr, const char *str);
 
 
 void printTrie(struct trieArray *trieArr);

@@ -2,6 +2,7 @@
   Copyright (c) Mario Garcia, Under the GNU Public v2 License.
  */
 #include <stdio.h>
+#include <stdlib.h>
 
 #include <debugger/debug.h>
 #include <token/scanner.h>
@@ -16,20 +17,24 @@ int main(int c, char *args[])
   
   while (token)
   {
-    char * str = get_lang_table_pair(token)->str;
+    const char * str = get_lang_table_pair(token)->str;
     //get rid of _
     str++;
-    debug("%s", str);
-    
-    if(trieLookup(myTrie, str) == 0)//not in lookup
+    /**
+       TODO(): Use yytext to read integers, doubles, 
+       or string literals for the symbol table variable data.
+     */
+    debug("%s ", str);
+      
+    if (!trieLookup(myTrie, str)) //not in lookup
     {
-        trieInsert(myTrie, str);
+      trieInsert(myTrie, str);
     }
-    
     token = yylex();
   }
   
   printTrie(myTrie);
   debug("\n");
+  
   return 0;
 }
