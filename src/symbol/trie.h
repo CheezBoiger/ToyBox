@@ -24,8 +24,8 @@
  */
 struct trie_node {
   unsigned int end;
-  const char   value;
-  struct trie_node *lookup[DEFAULT_TABLESIZE];
+  char   value;  
+  struct trie_node *children[DEFAULT_TABLESIZE];
 };
 
 
@@ -33,7 +33,7 @@ struct trie_node {
    Trie structure implementation.
  */
 struct trie {
-  struct trie_node root;
+  struct trie_node *root;
   unsigned int size;
 };
 
@@ -41,7 +41,10 @@ struct trie {
 /**
    Initializes the trie structure
  */
-enum err_t trie_init(struct trie *tree);
+enum err_t trie_node_init(struct trie_node *node);
+
+enum err_t trie_init(struct trie *trie);
+
 
 
 /**
@@ -52,18 +55,7 @@ enum err_t trie_init(struct trie *tree);
    @return err_success (1) on successfully inserting, otherwise
    err_fail (0) is returned.
  */
-enum err_t trie_insert(struct trie *tree, int8 *str);
-
-
-/**
-   Removes a value from the trie structure.
-
-   @param tree
-   @param str
-   @return err_success on successfully removing, otherwise
-   err_fail (0) is returned.
- */
-enum err_t trie_remove(struct trie *tree, int8 *str);
+enum err_t trie_insert(struct trie *tree, char *str);
 
 
 /**
