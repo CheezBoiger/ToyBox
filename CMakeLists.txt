@@ -37,8 +37,8 @@ set(TOYBOX_SRC
   ${TOYBOX_TOKEN_DIR}/scanner.h
   ${TOYBOX_LEX_DIR}/lexical.h
   ${TOYBOX_LEX_DIR}/lex.yy.c
-  ${TOYBOX_SYMBOL_DIR}/trie.h
-  ${TOYBOX_SYMBOL_DIR}/trie.c
+  ${TOYBOX_SYMBOL_DIR}/trieArray.h
+  ${TOYBOX_SYMBOL_DIR}/trieArray.c
   ${TOYBOX_SYMBOL_DIR}/map.h
   ${TOYBOX_SYMBOL_DIR}/map.c
   ${TOYBOX_SYMBOL_DIR}/hash.h
