@@ -246,7 +246,7 @@ void printTrie(struct trieArray *trieArr)
     {
         //character numerical position
         printf("\t");
-        for (int j = 0; j < PRINT_PER_COL && (j + i) < DEFAULT_TABLESIZE; j++)
+        for (int j = 0; j < PRINT_PER_COL && (j + i) < trieArr->current; j++)
         {
             if (trieArr->symbols[i + j] != ' ')
             printf("%d\t", i + j);
@@ -255,14 +255,14 @@ void printTrie(struct trieArray *trieArr)
         printf("\n");
         printf("symbol: ");
         //symbol print        
-        for (int j = 0; j < PRINT_PER_COL && (j + i) < DEFAULT_TABLESIZE; j++)
+        for (int j = 0; j < PRINT_PER_COL && (j + i) < trieArr->current; j++)
         {
             printf("%c\t", trieArr->symbols[i+j]);
         }
         
         printf("\n");
         printf("next:\t");
-        for (int j = 0; j < PRINT_PER_COL && (j + i) < DEFAULT_TABLESIZE; j++)
+        for (int j = 0; j < PRINT_PER_COL && (j + i) < trieArr->current; j++)
         {
             if (trieArr->next[i + j] != -1)
             {
