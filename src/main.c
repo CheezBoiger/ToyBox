@@ -29,6 +29,7 @@ int main(int c, char *args[])
     if (!trieLookup(myTrie, str)) //not in lookup
     {
       trieInsert(myTrie, str);
+      //debug("trieInsert result: %d\n", res);
     }
     token = yylex();
   }

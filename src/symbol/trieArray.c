@@ -65,7 +65,7 @@ enum err_t trieResize(struct trieArray *trieArr, int size)
     trieArr->next = arrayInt;
     trieArr->maxSize = size; 
 
-
+    return err_success;
 }
 
 
@@ -76,6 +76,10 @@ Initializes the trie structure
 //init the arrays and allocates memory for the symbol and next arrays
 enum err_t trieInit(struct trieArray  *trieArr)
 {
+    if (!trieArr)
+    {
+        return err_fail;   
+    }
     int size = DEFAULT_TABLESIZE;
     trieArr->maxSize = size;
     trieArr->symbols = calloc(1, sizeof(char)* size);
@@ -89,16 +93,22 @@ enum err_t trieInit(struct trieArray  *trieArr)
         trieArr->symbols[i] = ' ';
         trieArr->next[i] = -1;
     }
+    return err_success;
 }
 
 
 enum err_t trieCurrentIncrement(struct trieArray *trieArr)
 {
+    if (!trieArr)
+    {
+        return err_fail;
+    }
     trieArr->current++;//increment total of letters 
     if (trieArr->current >= trieArr->maxSize)//resize
     {
         trieResize(trieArr, trieArr->maxSize * 2);
     }
+    return err_success;
 }
 
 /**
@@ -111,6 +121,10 @@ err_fail (0) is returned.
 */
 enum err_t trieInsert(struct trieArray  *trieArr, const char *str)
 {
+    if (!trieArr)
+    {
+        return err_fail;
+    }
     int i = 0;
     int position = charToPosition(str[i]);
 
@@ -166,6 +180,7 @@ enum err_t trieInsert(struct trieArray  *trieArr, const char *str)
             }
         }
     }
+    return err_success;
 }
 
 
@@ -179,6 +194,10 @@ otherwise 0 if the str string param was not found.
 */
 int trieLookup(struct trieArray  *trieArr, const char *str)
 {
+    if (!trieArr)
+    {
+        return -1;
+    }
     int length = strlen(str);
     
     //look up switch
