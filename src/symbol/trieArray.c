@@ -172,10 +172,14 @@ enum err_t trieInsert(struct trieArray  *trieArr, const char *str)
             }
             else
             {
-                if (trieArr->next[i] == -1)
+                if (trieArr->next[position] == -1)
                 {
-                    trieArr->next[i] == trieArr->current;
+                    trieArr->next[position] = trieArr->current;
                     position = trieArr->current; 
+                }
+                else
+                {
+                    position = trieArr->next[position];
                 }
             }
         }
