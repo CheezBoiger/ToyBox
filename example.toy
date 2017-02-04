@@ -26,9 +26,11 @@ class Cat implements Animal {
 
 
 void main() {
-  double test = 0.12; // this shouldn't work
+  double test = .12; // this shouldn't work
+  double tes2 = 0.121 // this should
   double = 11.0e11; // dunno
-  Cat cat = new Cat();
+  string joker = "I like cats";
+  Cat cat;
 
   println(cat.SaySomething());
   
