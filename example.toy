@@ -1,0 +1,36 @@
+/*
+  Example of the ToyBox Lexical analyzer.
+*/
+
+interface Animal {
+  string SaySomething();
+  void TakeAWalk();
+}
+
+
+class Cat implements Animal {
+  int age;
+  double speed;
+  string name;
+
+
+  string SaySomething() {
+    return "Meow";
+  }
+
+  void TakeAWalk() {
+    // Do nothing, cause this function is useless with
+    // the data we have.
+  }
+}
+
+
+void main() {
+  double test = 0.12; // this shouldn't work
+  double = 11.0e11; // dunno
+  Cat cat = new Cat();
+
+  println(cat.SaySomething());
+  
+  return 0;
+}

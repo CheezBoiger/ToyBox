@@ -33,6 +33,7 @@ int main(int c, char *args[])
     }
     token = yylex();
   }
+  debug("\n");
   
   printTrie(myTrie);
   debug("\n");
