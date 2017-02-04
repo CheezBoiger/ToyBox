@@ -4,7 +4,11 @@
 #ifndef __TOYBOX_TOKEN_H
 #define __TOYBOX_TOKEN_H
 
-
+// If we are on Windows, we must disable unistd.h include
+// it is POSIX defined.
+#if _WIN32
+ #define YY_NO_UNISTD_H
+#endif 
 /**
    Toy Language lexemes. These are used to return the token to 
    the parser.
