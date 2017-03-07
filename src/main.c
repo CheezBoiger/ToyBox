@@ -8,12 +8,17 @@
 #include <token/scanner.h>
 #include <lex/lexical.h>
 #include <symbol/trieArray.h>
+#include <parser/parser.h>
+#include <parser/slr.h>
+
 
 int main(int c, char *args[])
 {
   enum toylang token = yylex();
   struct trieArray *myTrie = malloc(sizeof(struct trieArray));
   trieInit(myTrie);
+  // Initialize the parse engine with this algorithm.
+  toy_parser_init(slr_parse_algorithm);
   
   while (token)
   {

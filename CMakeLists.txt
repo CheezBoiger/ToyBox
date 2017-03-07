@@ -36,6 +36,7 @@ set(TOYBOX_TOKEN_DIR ${TOYBOX_SRC_DIR}/token/)
 set(TOYBOX_LEX_DIR ${TOYBOX_SRC_DIR}/lex/)
 set(TOYBOX_SYMBOL_DIR ${TOYBOX_SRC_DIR}/symbol/)
 set(TOYBOX_ERR_DIR ${TOYBOX_SRC_DIR}/err/)
+set(TOYBOX_PARSER_DIR ${TOYBOX_SRC_DIR}/parser/)
 
 
 set(TOYBOX_SRC
@@ -55,6 +56,12 @@ set(TOYBOX_SRC
   ${TOYBOX_SYMBOL_DIR}/xxhash.h
   ${TOYBOX_SYMBOL_DIR}/xxhash.c
   ${TOYBOX_ERR_DIR}/types.h
+  ${TOYBOX_PARSER_DIR}/parser.h
+  ${TOYBOX_PARSER_DIR}/parser.c
+  ${TOYBOX_PARSER_DIR}/stack.h
+  ${TOYBOX_PARSER_DIR}/stack.c
+  ${TOYBOX_PARSER_DIR}/slr.h
+  ${TOYBOX_PARSER_DIR}/slr.c
 )
 
 
