@@ -15,8 +15,8 @@
 int main(int c, char *args[])
 {
   enum toylang token = yylex();
-  struct trieArray *myTrie = malloc(sizeof(struct trieArray));
-  trieInit(myTrie);
+  struct trieArray myTrie;
+  trieInit(&myTrie);
   // Initialize the parse engine with this algorithm.
   toy_parser_init(slr_parse_algorithm);
   
@@ -31,16 +31,16 @@ int main(int c, char *args[])
      */
     debug("%s ", str);
       
-    if (!trieLookup(myTrie, str)) //not in lookup
+    if (!trieLookup(&myTrie, str)) //not in lookup
     {
-      trieInsert(myTrie, str);
+      trieInsert(&myTrie, str);
       //debug("trieInsert result: %d\n", res);
     }
     token = yylex();
   }
   debug("\n");
   
-  printTrie(myTrie);
+  printTrie(&myTrie);
   debug("\n");
   
   return 0;
