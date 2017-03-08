@@ -634,7 +634,7 @@ Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 #line 6 "toybox.l"
 #include <stdlib.h>
 #include "../token/token.h"
-#include "../parser/toybox.tab.h"
+#include "../parser/y.tab.h"
 #line 639 "lex.yy.c"
 
 #define INITIAL 0

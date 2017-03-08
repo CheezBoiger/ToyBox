@@ -5,7 +5,7 @@
 #define __TOYBOX_SCANNER_H
 
 
-#include <parser/toybox.tab.h>
+#include <parser/y.tab.h>
 #include <debugger/debug.h>
 
 

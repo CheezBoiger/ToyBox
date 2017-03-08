@@ -2,7 +2,7 @@
 // Copyright (c) Mario Garcia Micheal Wallace, Under the GNu Public v2 Licnense.
 //
 #include <token/scanner.h>
-#include <parser/toybox.tab.h>
+#include <parser/y.tab.h>
 
 
 #define LANG_KEY(lang, str) { lang, str }

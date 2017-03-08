@@ -5,7 +5,7 @@ Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 %{
 #include <stdlib.h>
 #include "../token/token.h"
-#include "../parser/toybox.tab.h"
+#include "../parser/y.tab.h"
 %}
 
 
