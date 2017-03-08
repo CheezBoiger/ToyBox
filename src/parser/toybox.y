@@ -69,10 +69,12 @@ void yyerror (char *s);
 
 /*descriptions of expected inputs       correspoinding actions (in C)*/
 program : Decl _plus        ';'         {printf("reduce ");}
+        ;
+
 Decl    : VariableDecl      ';'         {printf("reduce ");}
         | FunctionDecl      ';'         {printf("reduce ");}         
         | ClassDecl         ';'         {printf("reduce ");}
-        | interfaceDecl     ';'         {printf("reduce ");}
+        | InterfaceDecl     ';'         {printf("reduce ");}
         ;
 
 VariableDecl:   Variable  ';'
@@ -87,7 +89,7 @@ Type        :   _int      ';'
             ;
 
 FunctionDecl:   Type _id _leftparen Formals _rightparen StmtBlock ';'
-            |   _void _id _leftparen Formals _rightParen StmtBlock';'
+            |   _void _id _leftparen Formals _rightparen StmtBlock';'
             ;
 
 Formals     :   Variable _plus ';'
@@ -101,30 +103,86 @@ Field   : VariableDecl ';'
         | FunctionDecl ';'
         ;
 
+InterfaceDecl   :   _interface _id _leftbrace Prototype _multiplication _rightbrace ';'
+                ;
+Prototype   : Type _id _leftparen Formals _rightparen _semicolon ';'
+            | _void _id _leftparen Formals _rightparen _semicolon ';'
+            ;
 
-/*
+StmtBlock   : _leftbrace VariableDecl _multiplication Stmt _multiplication _rightbrace ';'
+            ;
 
+Stmt :  _less Expr _greater _semicolon ';'
+     |  IfStmt  ';'
+     |  WhileStmt ';'
+     |  ForStmt ';'
+     |  BreakStmt ';'
+     |  ReturnStmt ';'
+     |  PrintStmt ';'
+     |  StmtBlock   ';'
+     ;
 
-InterfaceDecl ::= interface id { Prototype* }
-Prototype ::= Type id ( Formals ) ; | void id ( Formals ) ;
-StmtBlock ::= { VariableDecl* Stmt* }
-Stmt ::= <Expr> ; | IfStmt | WhileStmt | ForStmt | BreakStmt | ReturnStmt | PrintStmt | StmtBlock
-IfStmt ::= if ( Expr ) Stmt <else Stmt>
-WhileStmt ::= while ( Expr ) Stmt
-ForStmt ::= for ( <Expr> ; Expr ; <Expr> ) Stmt
-BreakStmt ::= break ;
-ReturnStmt ::= return <Expr> ;
-PrintStmt ::= println ( Expr+, ) ;
-Expr ::= Lvalue = Expr | Constant | Lvalue | Call | ( Expr ) |
-Expr + Expr | Expr – Expr | Expr * Expr | Expr / Expr | Expr % Expr | - Expr |
-Expr < Expr | Expr <= Expr | Expr > Expr | Expr >= Expr |
-Expr == Expr | Expr != Expr | Expr && Expr | Expr || Expr | ! Expr
-readln () | newarray ( intconstant , Type )
-Lvalue ::= id | Lvalue [ Expr ] | Lvalue . id
-Call ::= id ( Actuals ) | id . id ( Actuals )
-Actuals ::= Expr+, | 
-Constant ::= intconstant | doubleconstant | stringconstant | booleanconstant
-*/
+IfStmt :    _if _less Expr _greater Stmt _less _else Stmt _greater ';'
+       ;
+
+WhileStmt : _while _leftparen Expr _rightparen Stmt ';'
+          ;
+
+ForStmt : _for _leftparen _less Expr _greater _semicolon Expr _semicolon _less Expr _greater _rightparen Stmt ';'
+        ;
+
+BreakStmt   : _break _semicolon ';'
+            ;
+
+ReturnStmt :    _return _less Expr _greater _semicolon ';'
+           ;
+
+PrintStmt  : _println _leftparen Expr _plus _comma _rightparen _semicolon ';'
+           ;
+
+Expr    : Lvalue _assignop Expr ';'
+        | Constant ';'
+        | Lvalue ';'
+        | Call ';'
+        | _leftparen Expr _rightparen ';'
+        | Expr _plus Expr ';'
+        | Expr _minus Expr ';'
+        | Expr _multiplication Expr ';'
+        | Expr _division Expr ";"
+        | Expr _mod Expr ';'
+        | _minus Expr ';'
+        | Expr _less Expr ';'
+        | Expr _lessequal Expr ';'
+        | Expr _greater Expr ';'
+        | Expr _greatereequal Expr ';'
+        | Expr _equal Expr ';'
+        | Expr _notequal Expr ';'
+        | Expr _and Expr ';'
+        | Expr _or Expr ';'
+        | Expr ';'
+        | _not Expr ';'
+        | _readln _leftparen _rightparen ';'
+        | _newarray _leftparen _intconstant _comma Type _rightparen ';'
+        ;
+
+Lvalue  : _id ';'
+        | Lvalue _leftbracket Expr _rightbracket ';'
+        | Lvalue _period _id ';'
+        ;
+
+Call    : _id _leftparen Actuals _rightparen ';'
+        | _id _period _id _leftparen Actuals _rightparen ';'
+        ;
+
+Actuals : Expr _plus _comma ';'
+        | _epsilon ';'
+        ;
+
+Constant : _intconstant ';'
+         | _doubleconstant ';'
+         | _stringconstant ';'
+         | _booleanconstant ';'
+         ;
 %%
 
 
