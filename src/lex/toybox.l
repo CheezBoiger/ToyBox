@@ -31,6 +31,7 @@ Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 "true"         return _true;
 "void"         return _void;
 "while"        return _while;
+"extends"      return _extends;
 
 "+"            return _plus;
 "-"            return _minus;
@@ -56,6 +57,7 @@ Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 "]"            return _rightbracket;
 "{"            return _leftbrace;
 "}"            return _rightbrace;
+
 
 
 \".*\"                                           return _stringconstant;

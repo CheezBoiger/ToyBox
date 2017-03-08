@@ -15,7 +15,7 @@ extern int yyparse();
 
 int main(int c, char *args[])
 {
-  
+  /*
   enum yytokentype token = yylex();
   struct trieArray myTrie;
   trieInit(&myTrie);
@@ -24,14 +24,13 @@ int main(int c, char *args[])
   
   while (token)
   {
-    yyparse();
     const char * str = get_lang_table_pair(token)->str;
     //get rid of _
     str++;
     /**
        TODO(): Use yytext to read integers, doubles, 
        or string literals for the symbol table variable data.
-     */
+     
     debug("%s ", str);
       
     if (!trieLookup(&myTrie, str)) //not in lookup
@@ -45,6 +44,9 @@ int main(int c, char *args[])
   
   printTrie(&myTrie);
   debug("\n");
-  
+  */
+  while (1) {
+    yyparse();
+  }
   return 0;
 }

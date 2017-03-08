@@ -50,6 +50,7 @@ static struct toylang_pair lang_table[] = {
   LANG_KEY(_semicolon,       "_semicolon"),
   LANG_KEY(_comma,           "_comma"),
   LANG_KEY(_period,          "_period"),
+  LANG_KEY(_epsilon,         "_epsilon"),
   LANG_KEY(_leftparen,       "_leftparen"),
   LANG_KEY(_rightparen,      "_rightparen"),
   LANG_KEY(_leftbracket,     "_leftbracket"),

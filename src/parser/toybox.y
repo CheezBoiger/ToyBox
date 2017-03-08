@@ -76,257 +76,200 @@ void yyerror (char *s);
 /* CFG here */
 %%
 
-/*descriptions of expected inputs       correspoinding actions (in C)*/
-
- /*
-   Progrma ::= Decl+
-  */
-Program : Decl        {printf("reduce ");}
-  | Program Decl      {printf("reduce ");}
-  ;
+Program:
+Decl
+;
 
 /*
-  Decl ::= VariableDecl 
-        | FunctionDecl
-	| ClassDecl
-	| InterfaceDecl
+  Simply comment out one of these Decls in order to debug the tree for which
+  ever keyword is giving you trouble.
  */
-Decl: VariableDecl         {printf("reduce ");}
-  | FunctionDecl           {printf("reduce ");}         
-  | ClassDecl              {printf("reduce ");}
-  | InterfaceDecl          {printf("reduce ");} 
-  ;
+Decl:
+/* NULL */
+| VariableDecl { printf("[shift 2]\n"); }
+| ClassDecl { printf("[shift 4]\n"); }
+| InterfaceDecl { printf("[shift 9]\n"); }
+| FunctionDecl { printf("[shift 13]\n"); }
+;
 
 /*
-  Variable ::= Variable ;
+  Item 2
  */
-VariableDecl:   Variable _semicolon
+VariableDecl:
+Variable _semicolon Decl { printf("[shift]\n"); }
+;
 
 /*
-  Variable ::= Type id
+  Item 3
+
+  NOTE(Wallace): VARIABLE CANNOT BE x; if you think it should
+  add in a null alternative. Will cause conflicts though...
  */
-Variable:   Type _id 
-
+Variable:
+Type _id { printf("[shift Variable]\n"); }
+;
 
 /*
-  Type ::= int
-        | double
-	| boolean 
-	| string
-	| Type []
-	| id
+  Item 4
  */
-Type:   _int   
-  |   _double   
-  |   _boolean 
-  |   _string  
-  |   Type _leftbracket _rightbracket
-  |   _id      
-  ;
-
-/* FunctionDecl ::= Type id (Formals) StmtBlock 
-                 | void id (Formals) StmtBlock 
-*/
-FunctionDecl:   Type _id _leftparen Formals _rightparen StmtBlock 
-  |   _void _id _leftparen Formals _rightparen StmtBlock
-  ;
-
-/* Formals ::= Variable+, | epsilon(nothing) */
-Formals:   Variable _plus ';'
-  |  ""
-  ;
-
-/* ClassDecl ::= class id <extends id> <implements id+,> { Field* } */
-ClassDecl: _class _id _leftbrace Field _rightbrace 
-  | _class _id _extends _id _leftbrace Field _rightbrace 
-  | _class _id _extends _id _implements ClassIds _leftbrace Field _rightbrace 
-  ;
-
-ClassIds: _id
-  | ',' ClassIds
-  ;
-
-
-/* 
-   Field ::= VariableDecl ;
-          | FunctionDecl ;
-*/
-Field: VariableDecl _semicolon
-  | FunctionDecl _semicolon
-  ;
+Type:
+  _double { printf("[reduce]\n"); }
+| _int { printf("[reduce]\n"); }
+| _boolean { printf("[reduce]\n"); }
+| _string { printf("[reduce]\n"); }
+| Type _leftbracket _rightbracket { printf("[reduce]\n"); }
+| _id { printf("[reduce]\n"); }
+;
 
 /*
-  InterfaceDecl ::= interface id { Protype* }
+  Item 5
  */
-InterfaceDecl:   _interface _id _leftbrace Prototype _rightbrace
-  ;
+ClassDecl:
+_class _id ExtendClass ImplementClass _leftbrace Field _rightbrace Decl { printf("[shift]\n"); }
+;
 
 /*
-  Prototype ::= Type id (Formals); 
-             | void id (Formals);
-*/
-Prototype: Type _id _leftparen Formals _rightparen _semicolon
-  | _void _id _leftparen Formals _rightparen _semicolon
-  ;
-
-/*
-  StmtBlock ::= { VariableDecl* Stmt* }
+  Item 6
  */
-StmtBlock: _leftbrace VariableDecl Stmt _rightbrace
-  ;
+ExtendClass:
+_extends _id { printf("[reduce]"); }
+|
+;
+
+/*
+  Item 7
+ */
+ImplementClass:
+_implements ImplInterface
+|
+;
+
+/*
+  Item 8
+ */
+ImplInterface:
+_id
+| _id _comma ImplInterface
+;
+
+/*
+  Item 9
+ */
+InterfaceDecl:
+_interface _id _leftbrace Prototype _rightbrace Decl { printf("[shift]"); }
+;
+
+/*
+  Item 10
+ */
+Prototype:
+Type _id _leftparen Formals _rightparen _semicolon Prototype
+|
+;
+
+/*
+  Item 11
+ */
+Formals:
+Variable
+| Variable _comma Formals
+|
+;
+
+/*
+  Item 12
+ */
+Field:
+VariableDecl
+|
+;
+
+/*
+  Item 13
+ */
+FunctionDecl:
+Type _id _leftparen Formals _rightparen StmtBlock Decl
+;
+
+/*
+  Item 14
+ */
+StmtBlock:
+_leftparen StmtDeclares Stmt _rightparen
+;
 
 
 /*
-  Stmt ::= <Expr> ;
-        | IfStmt
-        | WhileStmt
-	| ForStmt
-	| BreakStmt
-	| ReturnStmt  
-	| PrintStmt
-	| StmtBlock
+  Item 15
  */
-Stmt:  Expr _semicolon
-  |  IfStmt 
-  |  WhileStmt
-  |  ForStmt 
-  |  BreakStmt
-  |  ReturnStmt
-  |  PrintStmt 
-  |  StmtBlock 
-  ;
-
-/* 
-   if (Expr) Stmt <else Stmt> 
-*/
-IfStmt: _if Expr Stmt _else Stmt
-  | _if Expr Stmt
-  ;
+StmtDeclares:
+VariableDecl
+|
+;
 
 
 /*
-  WhileStmt ::= while (Expr) Stmt
+  Item 16
  */
-WhileStmt: _while _leftparen Expr _rightparen Stmt 
-  ;
+Stmt:
+Expr _semicolon Stmt
+|
+;
 
 
 /*
-  ForSmt ::= for (<Expr> ; Expr; <Expr>) Stmt
+  Item 17
  */
-ForStmt: _for _leftparen ForExpr _semicolon Expr _semicolon ForExpr _rightparen Stmt
-  ;
-
-
-ForExpr: Expr
-  | /*NULL*/
-  ;
+Expr:
+Constant
+| Lvalue
+| Expr _plus Expr
+| Expr _minus Expr
+| Expr _multiplication Expr
+| Expr _division Expr
+| Expr _mod Expr
+| _minus Expr
+| Expr _less Expr
+| Expr _lessequal Expr
+| Expr _greater Expr
+| Expr _greaterequal Expr
+| Expr _equal Expr
+| Expr _notequal Expr
+| Expr _and Expr
+| Expr _or Expr
+| _not Expr
+| _readln _leftparen _rightparen
+| _newarray _leftparen _intconstant _comma Type _rightparen
+;
 
 
 /*
-  BreakStmt ::= break ;
+  Item 18
+  TODO(Wallace): This is causing conflict with Expr -> Lvalue ! Expr is fine,
+  Lvalue is left recursive, need to fix!
+  
+  Also add in Call too! Everything else is ok. (classes, interfaces, and variabledecls 
+  are fine, hopefully they don't conflict with you).
  */
-BreakStmt: _break _semicolon 
-  ;
+Lvalue:
+_id
+| Lvalue _leftbracket Expr _rightbracket
+| Lvalue _period _id
+| Lvalue _assignop Expr
+;
 
 
 /*
-  ReturnStmt ::= return <Expr>;
+  Item 19
  */
-ReturnStmt : _return Expr _semicolon
-  | _return _semicolon
-  ;
-
-/*
-  PrintStmt ::= println(Expr+,);
- */
-PrintStmt: _println _leftparen PrintEnc _rightparen _semicolon 
-  ;
+Constant:
+_intconstant
+| _doubleconstant
+| _stringconstant
+| _booleanconstant
+;
 
 
-PrintEnc: Expr
-  | PrintEnc _comma Expr
-  ;
-
-
-/*
-  Expr ::= Lvalue = Expr 
-        | Constant
-	| Lvalue
-	| Call
-	| ( Expr )
-	| Expr + Expr 
-	| Expr - Expr
-	| Expr * Expr
-	| Expr / Expr
-	| Expr % Expr
-	| -Expr
-	| Expr < Expr
-	| you get the point...
- */
-Expr: Lvalue _assignop Expr 
-  | Constant 
-  | Lvalue 
-  | Call 
-  | _leftparen Expr _rightparen 
-  | Expr _plus Expr 
-  | Expr _minus Expr 
-  | Expr _multiplication Expr  
-  | Expr _division Expr  
-  | Expr _mod Expr 
-  | _minus Expr 
-  | Expr _less Expr 
-  | Expr _lessequal Expr 
-  | Expr _greater Expr 
-  | Expr _greatereequal Expr 
-  | Expr _equal Expr 
-  | Expr _notequal Expr 
-  | Expr _and Expr 
-  | Expr _or Expr 
-  | Expr 
-  | _not Expr 
-  | _readln _leftparen _rightparen 
-  | _newarray _leftparen _intconstant _comma Type _rightparen 
-  ;
-
-/*
-  Lvalue ::= id 
-          | Lvalue [ Expr ]
-	  | Lvalue . id
- */
-Lvalue: _id 
-  | Lvalue _leftbracket Expr _rightbracket 
-  | Lvalue _period _id 
-  ;
-
-/*
-  Call ::= id (Actuals) 
-        | id . id (Actuals)
- */
-Call: _id _leftparen Actuals _rightparen 
-  | _id _period _id _leftparen Actuals _rightparen
-  ;
-
-/*
-  Actuals ::= Expr+,
-           | epsilon
- */
-Actuals : Expr
-        | Actuals _comma Expr
-        |  
-        ;
-
-/*
-  Constant ::= intconstant
-            | doubleconstant
-	    | stringconstant
-	    | booleanconstant
- */
-Constant : _intconstant 
-         | _doubleconstant 
-         | _stringconstant 
-         | _booleanconstant
-         ;
 %%
 
 
