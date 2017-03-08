@@ -633,8 +633,9 @@ Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 */
 #line 6 "toybox.l"
 #include <stdlib.h>
+#include "../token/token.h"
 #include "../parser/toybox.tab.h"
-#line 638 "lex.yy.c"
+#line 639 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -852,11 +853,11 @@ YY_DECL
 		}
 
 	{
-#line 11 "toybox.l"
+#line 12 "toybox.l"
 
 
 
-#line 860 "lex.yy.c"
+#line 861 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -915,261 +916,261 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 14 "toybox.l"
+#line 15 "toybox.l"
 return _boolean;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 15 "toybox.l"
+#line 16 "toybox.l"
 return _break;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 16 "toybox.l"
+#line 17 "toybox.l"
 return _class;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 17 "toybox.l"
+#line 18 "toybox.l"
 return _double;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 18 "toybox.l"
+#line 19 "toybox.l"
 return _else;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 19 "toybox.l"
+#line 20 "toybox.l"
 return _false;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 20 "toybox.l"
+#line 21 "toybox.l"
 return _for;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 21 "toybox.l"
+#line 22 "toybox.l"
 return _if;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 22 "toybox.l"
+#line 23 "toybox.l"
 return _implements;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 23 "toybox.l"
+#line 24 "toybox.l"
 return _int;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 24 "toybox.l"
+#line 25 "toybox.l"
 return _interface;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 25 "toybox.l"
+#line 26 "toybox.l"
 return _newarray;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 26 "toybox.l"
+#line 27 "toybox.l"
 return _println;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 27 "toybox.l"
+#line 28 "toybox.l"
 return _readln;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 28 "toybox.l"
+#line 29 "toybox.l"
 return _return;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 29 "toybox.l"
+#line 30 "toybox.l"
 return _string;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 30 "toybox.l"
+#line 31 "toybox.l"
 return _true;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 31 "toybox.l"
+#line 32 "toybox.l"
 return _void;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 32 "toybox.l"
+#line 33 "toybox.l"
 return _while;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 34 "toybox.l"
+#line 35 "toybox.l"
 return _plus;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 35 "toybox.l"
+#line 36 "toybox.l"
 return _minus;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 36 "toybox.l"
+#line 37 "toybox.l"
 return _multiplication;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 37 "toybox.l"
+#line 38 "toybox.l"
 return _division;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 38 "toybox.l"
+#line 39 "toybox.l"
 return _mod;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 39 "toybox.l"
+#line 40 "toybox.l"
 return _less;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 40 "toybox.l"
+#line 41 "toybox.l"
 return _lessequal;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 41 "toybox.l"
+#line 42 "toybox.l"
 return _greater;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 42 "toybox.l"
+#line 43 "toybox.l"
 return _greaterequal;
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 43 "toybox.l"
+#line 44 "toybox.l"
 return _equal;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 44 "toybox.l"
+#line 45 "toybox.l"
 return _notequal;
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 45 "toybox.l"
+#line 46 "toybox.l"
 return _and;
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 46 "toybox.l"
+#line 47 "toybox.l"
 return _or;
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 47 "toybox.l"
+#line 48 "toybox.l"
 return _not;
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 48 "toybox.l"
+#line 49 "toybox.l"
 return _assignop;
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 49 "toybox.l"
+#line 50 "toybox.l"
 return _semicolon;
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 50 "toybox.l"
+#line 51 "toybox.l"
 return _comma;
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 51 "toybox.l"
+#line 52 "toybox.l"
 return _period;
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 52 "toybox.l"
+#line 53 "toybox.l"
 return _leftparen;
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 53 "toybox.l"
+#line 54 "toybox.l"
 return _rightparen;
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 54 "toybox.l"
+#line 55 "toybox.l"
 return _leftbracket;
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 55 "toybox.l"
+#line 56 "toybox.l"
 return _rightbracket;
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 56 "toybox.l"
+#line 57 "toybox.l"
 return _leftbrace;
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 57 "toybox.l"
+#line 58 "toybox.l"
 return _rightbrace;
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 60 "toybox.l"
+#line 61 "toybox.l"
 return _stringconstant;
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 61 "toybox.l"
+#line 62 "toybox.l"
 return _intconstant;
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 62 "toybox.l"
+#line 63 "toybox.l"
 return _doubleconstant;
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 63 "toybox.l"
+#line 64 "toybox.l"
 return _id;
 	YY_BREAK
 case 48:
 /* rule 48 can match eol */
 YY_RULE_SETUP
-#line 65 "toybox.l"
+#line 66 "toybox.l"
 { };
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 66 "toybox.l"
+#line 67 "toybox.l"
 { };
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 68 "toybox.l"
+#line 69 "toybox.l"
 { };
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 70 "toybox.l"
+#line 71 "toybox.l"
 ECHO;
 	YY_BREAK
-#line 1173 "lex.yy.c"
+#line 1174 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2170,7 +2171,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 70 "toybox.l"
+#line 71 "toybox.l"
 
 
 
