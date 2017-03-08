@@ -62,8 +62,8 @@ set(TOYBOX_SRC
   ${TOYBOX_PARSER_DIR}/stack.c
   ${TOYBOX_PARSER_DIR}/slr.h
   ${TOYBOX_PARSER_DIR}/slr.c
-  ${TOYBOX_PARSER_DIR}/toybox.tab.h
-  ${TOYBOX_PARSER_DIR}/toybox.tab.c
+  ${TOYBOX_PARSER_DIR}/y.tab.h
+  ${TOYBOX_PARSER_DIR}/y.tab.c
 )
 
 

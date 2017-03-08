@@ -91,21 +91,21 @@ Program : Decl        {printf("reduce ");}
 	| ClassDecl
 	| InterfaceDecl
  */
-Decl: VariableDecl _semicolon        {printf("reduce ");}
-  | FunctionDecl  _semicolon         {printf("reduce ");}         
-  | ClassDecl     _semicolon         {printf("reduce ");}
-  | InterfaceDecl _semicolon         {printf("reduce ");} 
+Decl: VariableDecl         {printf("reduce ");}
+  | FunctionDecl           {printf("reduce ");}         
+  | ClassDecl              {printf("reduce ");}
+  | InterfaceDecl          {printf("reduce ");} 
   ;
 
 /*
-  Variable ;
+  Variable ::= Variable ;
  */
 VariableDecl:   Variable _semicolon
 
 /*
   Variable ::= Type id
  */
-Variable:   Type _id  _semicolon
+Variable:   Type _id 
 
 
 /*
@@ -127,8 +127,8 @@ Type:   _int
 /* FunctionDecl ::= Type id (Formals) StmtBlock 
                  | void id (Formals) StmtBlock 
 */
-FunctionDecl:   Type _id _leftparen Formals _rightparen StmtBlock _semicolon
-  |   _void _id _leftparen Formals _rightparen StmtBlock _semicolon
+FunctionDecl:   Type _id _leftparen Formals _rightparen StmtBlock 
+  |   _void _id _leftparen Formals _rightparen StmtBlock
   ;
 
 /* Formals ::= Variable+, | epsilon(nothing) */
@@ -151,8 +151,8 @@ ClassIds: _id
    Field ::= VariableDecl ;
           | FunctionDecl ;
 */
-Field: VariableDecl ';'
-  | FunctionDecl ';'
+Field: VariableDecl _semicolon
+  | FunctionDecl _semicolon
   ;
 
 /*
@@ -210,15 +210,18 @@ IfStmt: _if Expr Stmt _else Stmt
 WhileStmt: _while _leftparen Expr _rightparen Stmt 
   ;
 
+
 /*
   ForSmt ::= for (<Expr> ; Expr; <Expr>) Stmt
  */
 ForStmt: _for _leftparen ForExpr _semicolon Expr _semicolon ForExpr _rightparen Stmt
   ;
 
+
 ForExpr: Expr
   | /*NULL*/
   ;
+
 
 /*
   BreakStmt ::= break ;
