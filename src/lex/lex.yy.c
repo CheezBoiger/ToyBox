@@ -632,8 +632,9 @@ char *yytext;
 Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 */
 #line 6 "toybox.l"
-#include "../token/token.h"
-#line 637 "lex.yy.c"
+#include <stdlib.h>
+#include "../parser/toybox.tab.h"
+#line 638 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -851,11 +852,11 @@ YY_DECL
 		}
 
 	{
-#line 10 "toybox.l"
+#line 11 "toybox.l"
 
 
 
-#line 859 "lex.yy.c"
+#line 860 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -914,261 +915,261 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 13 "toybox.l"
-return (int)ToyLangBoolean;
+#line 14 "toybox.l"
+return _boolean;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 14 "toybox.l"
-return (int)ToyLangBreak;
+#line 15 "toybox.l"
+return _break;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 15 "toybox.l"
-return (int)ToyLangClass;
+#line 16 "toybox.l"
+return _class;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 16 "toybox.l"
-return (int)ToyLangDouble;
+#line 17 "toybox.l"
+return _double;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 17 "toybox.l"
-return (int)ToyLangElse;
+#line 18 "toybox.l"
+return _else;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 18 "toybox.l"
-return (int)ToyLangFalse;
+#line 19 "toybox.l"
+return _false;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 19 "toybox.l"
-return (int)ToyLangFor;
+#line 20 "toybox.l"
+return _for;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 20 "toybox.l"
-return (int)ToyLangIf;
+#line 21 "toybox.l"
+return _if;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 21 "toybox.l"
-return (int)ToyLangImplements;
+#line 22 "toybox.l"
+return _implements;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 22 "toybox.l"
-return (int)ToyLangInt;
+#line 23 "toybox.l"
+return _int;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 23 "toybox.l"
-return (int)ToyLangInterface;
+#line 24 "toybox.l"
+return _interface;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 24 "toybox.l"
-return (int)ToyLangNewArray;
+#line 25 "toybox.l"
+return _newarray;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 25 "toybox.l"
-return (int)ToyLangPrintln;
+#line 26 "toybox.l"
+return _println;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 26 "toybox.l"
-return (int)ToyLangReadln;
+#line 27 "toybox.l"
+return _readln;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 27 "toybox.l"
-return (int)ToyLangReturn;
+#line 28 "toybox.l"
+return _return;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 28 "toybox.l"
-return (int)ToyLangString;
+#line 29 "toybox.l"
+return _string;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 29 "toybox.l"
-return (int)ToyLangTrue;
+#line 30 "toybox.l"
+return _true;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 30 "toybox.l"
-return (int)ToyLangVoid;
+#line 31 "toybox.l"
+return _void;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 31 "toybox.l"
-return (int)ToyLangWhile;
+#line 32 "toybox.l"
+return _while;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 33 "toybox.l"
-return (int)ToyLangPlus;
+#line 34 "toybox.l"
+return _plus;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 34 "toybox.l"
-return (int)ToyLangMinus;
+#line 35 "toybox.l"
+return _minus;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 35 "toybox.l"
-return (int)ToyLangMultiplication;
+#line 36 "toybox.l"
+return _multiplication;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 36 "toybox.l"
-return (int)ToyLangDivision;
+#line 37 "toybox.l"
+return _division;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 37 "toybox.l"
-return (int)ToyLangMod;
+#line 38 "toybox.l"
+return _mod;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 38 "toybox.l"
-return (int)ToyLangLess;
+#line 39 "toybox.l"
+return _less;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 39 "toybox.l"
-return (int)ToyLangLessEqual;
+#line 40 "toybox.l"
+return _lessequal;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 40 "toybox.l"
-return (int)ToyLangGreater;
+#line 41 "toybox.l"
+return _greater;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 41 "toybox.l"
-return (int)ToyLangGreaterEqual;
+#line 42 "toybox.l"
+return _greaterequal;
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 42 "toybox.l"
-return (int)ToyLangEqual;
+#line 43 "toybox.l"
+return _equal;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 43 "toybox.l"
-return (int)ToyLangNotEqual;
+#line 44 "toybox.l"
+return _notequal;
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 44 "toybox.l"
-return (int)ToyLangAnd;
+#line 45 "toybox.l"
+return _and;
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 45 "toybox.l"
-return (int)ToyLangOr;
+#line 46 "toybox.l"
+return _or;
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 46 "toybox.l"
-return (int)ToyLangNot;
+#line 47 "toybox.l"
+return _not;
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 47 "toybox.l"
-return (int)ToyLangAssignOp;
+#line 48 "toybox.l"
+return _assignop;
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 48 "toybox.l"
-return (int)ToyLangSemicolon;
+#line 49 "toybox.l"
+return _semicolon;
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 49 "toybox.l"
-return (int)ToyLangComma;
+#line 50 "toybox.l"
+return _comma;
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 50 "toybox.l"
-return (int)ToyLangPeriod;
+#line 51 "toybox.l"
+return _period;
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 51 "toybox.l"
-return (int)ToyLangLeftParen;
+#line 52 "toybox.l"
+return _leftparen;
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 52 "toybox.l"
-return (int)ToyLangRightParen;
+#line 53 "toybox.l"
+return _rightparen;
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 53 "toybox.l"
-return (int)ToyLangLeftBracket;
+#line 54 "toybox.l"
+return _leftbracket;
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 54 "toybox.l"
-return (int)ToyLangRightBracket;
+#line 55 "toybox.l"
+return _rightbracket;
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 55 "toybox.l"
-return (int)ToyLangLeftBrace;
+#line 56 "toybox.l"
+return _leftbrace;
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 56 "toybox.l"
-return (int)ToyLangRightBrace;
+#line 57 "toybox.l"
+return _rightbrace;
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 59 "toybox.l"
-return (int)ToyLangStringConstant;
+#line 60 "toybox.l"
+return _stringconstant;
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 60 "toybox.l"
-return (int)ToyLangIntConstant;
+#line 61 "toybox.l"
+return _intconstant;
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 61 "toybox.l"
-return (int)ToyLangDoubleConstant;
+#line 62 "toybox.l"
+return _doubleconstant;
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 62 "toybox.l"
-return (int)ToyLangId;
+#line 63 "toybox.l"
+return _id;
 	YY_BREAK
 case 48:
 /* rule 48 can match eol */
 YY_RULE_SETUP
-#line 64 "toybox.l"
+#line 65 "toybox.l"
 { };
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 65 "toybox.l"
+#line 66 "toybox.l"
 { };
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 67 "toybox.l"
+#line 68 "toybox.l"
 { };
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 69 "toybox.l"
+#line 70 "toybox.l"
 ECHO;
 	YY_BREAK
-#line 1172 "lex.yy.c"
+#line 1173 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2169,7 +2170,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 69 "toybox.l"
+#line 70 "toybox.l"
 
 
 

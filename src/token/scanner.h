@@ -5,7 +5,7 @@
 #define __TOYBOX_SCANNER_H
 
 
-#include <token/token.h>
+#include <parser/toybox.tab.h>
 #include <debugger/debug.h>
 
 
@@ -14,15 +14,15 @@
  */
 struct toylang_pair
 {
-  enum toylang    lang_token;
-  const char      *str;
+  enum yytokentype    lang_token;
+  const char          *str;
 };
 
 
 /**
    Lookup the information of a token in the Toy language.
  */
-struct toylang_pair *get_lang_table_pair(enum toylang token);
+struct toylang_pair *get_lang_table_pair(enum yytokentype token);
 
 
 #endif // __TOYBOX_SCANNER_H

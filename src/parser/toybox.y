@@ -4,6 +4,8 @@ void yyerror (char *s);
 #include <stdlib.h>
 
 
+ int yylex();
+ 
 %}
 
 /* yacc definitions */

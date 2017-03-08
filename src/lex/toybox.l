@@ -3,63 +3,64 @@ Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 */
 
 %{
-#include "../token/token.h"
+#include <stdlib.h>
+#include "../parser/toybox.tab.h"
 %}
 
 
 %%
 
 
-"boolean"      return (int)ToyLangBoolean;
-"break"        return (int)ToyLangBreak;
-"class"        return (int)ToyLangClass;
-"double"       return (int)ToyLangDouble;
-"else"         return (int)ToyLangElse;
-"false"        return (int)ToyLangFalse;
-"for"          return (int)ToyLangFor;
-"if"           return (int)ToyLangIf;
-"implements"   return (int)ToyLangImplements;
-"int"          return (int)ToyLangInt;
-"interface"    return (int)ToyLangInterface;
-"newarray"     return (int)ToyLangNewArray;
-"println"      return (int)ToyLangPrintln;
-"readln"       return (int)ToyLangReadln;
-"return"       return (int)ToyLangReturn;
-"string"       return (int)ToyLangString;
-"true"         return (int)ToyLangTrue;
-"void"         return (int)ToyLangVoid;
-"while"        return (int)ToyLangWhile;
+"boolean"      return _boolean;
+"break"        return _break;
+"class"        return _class;
+"double"       return _double;
+"else"         return _else;
+"false"        return _false;
+"for"          return _for;
+"if"           return _if;
+"implements"   return _implements;
+"int"          return _int;
+"interface"    return _interface;
+"newarray"     return _newarray;
+"println"      return _println;
+"readln"       return _readln;
+"return"       return _return;
+"string"       return _string;
+"true"         return _true;
+"void"         return _void;
+"while"        return _while;
 
-"+"            return (int)ToyLangPlus;
-"-"            return (int)ToyLangMinus;
-"*"            return (int)ToyLangMultiplication;
-"/"            return (int)ToyLangDivision;
-"%"            return (int)ToyLangMod;
-"<"            return (int)ToyLangLess;
-"<="           return (int)ToyLangLessEqual;
-">"            return (int)ToyLangGreater;
-">="           return (int)ToyLangGreaterEqual;
-"=="           return (int)ToyLangEqual;
-"!="           return (int)ToyLangNotEqual;
-"&&"           return (int)ToyLangAnd;
-"||"           return (int)ToyLangOr;
-"!"            return (int)ToyLangNot;
-"="            return (int)ToyLangAssignOp;
-";"            return (int)ToyLangSemicolon;
-","            return (int)ToyLangComma;
-"."            return (int)ToyLangPeriod;
-"("            return (int)ToyLangLeftParen;
-")"            return (int)ToyLangRightParen;
-"["            return (int)ToyLangLeftBracket;
-"]"            return (int)ToyLangRightBracket;
-"{"            return (int)ToyLangLeftBrace;
-"}"            return (int)ToyLangRightBrace;
+"+"            return _plus;
+"-"            return _minus;
+"*"            return _multiplication;
+"/"            return _division;
+"%"            return _mod;
+"<"            return _less;
+"<="           return _lessequal;
+">"            return _greater;
+">="           return _greaterequal;
+"=="           return _equal;
+"!="           return _notequal;
+"&&"           return _and;
+"||"           return _or;
+"!"            return _not;
+"="            return _assignop;
+";"            return _semicolon;
+","            return _comma;
+"."            return _period;
+"("            return _leftparen;
+")"            return _rightparen;
+"["            return _leftbracket;
+"]"            return _rightbracket;
+"{"            return _leftbrace;
+"}"            return _rightbrace;
 
 
-\".*\"                                           return (int)ToyLangStringConstant;
-0[x|X][a-fA-F0-9]+|[0-9]+                        return (int)ToyLangIntConstant;
-[0-9][0-9]*"."[0-9]*|[0-9][0-9]*"."[0-9]*[e|E][-|+]*[0-9]+ return (int)ToyLangDoubleConstant;
-_*[a-zA-Z]+[a-zA-Z0-9]*                          return (int)ToyLangId;
+\".*\"                                           return _stringconstant;
+0[x|X][a-fA-F0-9]+|[0-9]+                        return _intconstant;
+[0-9][0-9]*"."[0-9]*|[0-9][0-9]*"."[0-9]*[e|E][-|+]*[0-9]+ return _doubleconstant;
+_*[a-zA-Z]+[a-zA-Z0-9]*                          return _id;
 
 [/][*][^*]*[*]+([^*/][^*]*[*]+)*[/]    { };
 "//".*                                 { };
