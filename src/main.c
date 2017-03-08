@@ -11,9 +11,11 @@
 #include <parser/parser.h>
 #include <parser/slr.h>
 
+extern int yyparse();
 
 int main(int c, char *args[])
 {
+  
   enum yytokentype token = yylex();
   struct trieArray myTrie;
   trieInit(&myTrie);
@@ -22,6 +24,7 @@ int main(int c, char *args[])
   
   while (token)
   {
+    yyparse();
     const char * str = get_lang_table_pair(token)->str;
     //get rid of _
     str++;

@@ -72,7 +72,7 @@ void yyerror (char *s);
  int yylex();
  
 
-#line 76 "toybox.tab.c" /* yacc.c:339  */
+#line 76 "y.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -91,9 +91,9 @@ void yyerror (char *s);
 #endif
 
 /* In a future release of Bison, this section will be replaced
-   by #include "toybox.tab.h".  */
-#ifndef YY_YY_TOYBOX_TAB_H_INCLUDED
-# define YY_YY_TOYBOX_TAB_H_INCLUDED
+   by #include "y.tab.h".  */
+#ifndef YY_YY_Y_TAB_H_INCLUDED
+# define YY_YY_Y_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -160,6 +160,58 @@ extern int yydebug;
     _greaterequal = 308
   };
 #endif
+/* Tokens.  */
+#define _boolean 258
+#define _break 259
+#define _class 260
+#define _double 261
+#define _else 262
+#define _extends 263
+#define _false 264
+#define _for 265
+#define _if 266
+#define _implements 267
+#define _int 268
+#define _interface 269
+#define _newarray 270
+#define _println 271
+#define _readln 272
+#define _return 273
+#define _string 274
+#define _true 275
+#define _void 276
+#define _while 277
+#define _plus 278
+#define _minus 279
+#define _multiplication 280
+#define _division 281
+#define _mod 282
+#define _less 283
+#define _lessequal 284
+#define _greater 285
+#define _greatereequal 286
+#define _equal 287
+#define _notequal 288
+#define _and 289
+#define _or 290
+#define _not 291
+#define _assignop 292
+#define _semicolon 293
+#define _comma 294
+#define _period 295
+#define _leftparen 296
+#define _rightparen 297
+#define _leftbracket 298
+#define _rightbracket 299
+#define _leftbrace 300
+#define _rightbrace 301
+#define _intconstant 302
+#define _doubleconstant 303
+#define _stringconstant 304
+#define _booleanconstant 305
+#define _id 306
+#define _epsilon 307
+#define _greaterequal 308
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -173,11 +225,11 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_TOYBOX_TAB_H_INCLUDED  */
+#endif /* !YY_YY_Y_TAB_H_INCLUDED  */
 
 /* Copy the second part of user declarations.  */
 
-#line 181 "toybox.tab.c" /* yacc.c:358  */
+#line 233 "y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1428,35 +1480,41 @@ yyreduce:
         case 2:
 #line 84 "toybox.y" /* yacc.c:1646  */
     {printf("reduce ");}
-#line 1432 "toybox.tab.c" /* yacc.c:1646  */
+#line 1484 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 3:
+#line 85 "toybox.y" /* yacc.c:1646  */
+    {printf("reduce ");}
+#line 1490 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
 #line 94 "toybox.y" /* yacc.c:1646  */
     {printf("reduce ");}
-#line 1438 "toybox.tab.c" /* yacc.c:1646  */
+#line 1496 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
 #line 95 "toybox.y" /* yacc.c:1646  */
     {printf("reduce ");}
-#line 1444 "toybox.tab.c" /* yacc.c:1646  */
+#line 1502 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
 #line 96 "toybox.y" /* yacc.c:1646  */
     {printf("reduce ");}
-#line 1450 "toybox.tab.c" /* yacc.c:1646  */
+#line 1508 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
 #line 97 "toybox.y" /* yacc.c:1646  */
     {printf("reduce ");}
-#line 1456 "toybox.tab.c" /* yacc.c:1646  */
+#line 1514 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1460 "toybox.tab.c" /* yacc.c:1646  */
+#line 1518 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1702,3 +1760,5 @@ yyreturn:
 
 
 void yyerror (char *s){fprintf (stderr, "%s\n", s);}
+
+

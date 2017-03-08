@@ -82,7 +82,7 @@ void yyerror (char *s);
    Progrma ::= Decl+
   */
 Program : Decl        {printf("reduce ");}
-  | Program Decl 
+  | Program Decl      {printf("reduce ");}
   ;
 
 /*
@@ -93,7 +93,7 @@ Program : Decl        {printf("reduce ");}
  */
 Decl: VariableDecl _semicolon        {printf("reduce ");}
   | FunctionDecl  _semicolon         {printf("reduce ");}         
-  | ClassDecl     _semicolon      {printf("reduce ");}
+  | ClassDecl     _semicolon         {printf("reduce ");}
   | InterfaceDecl _semicolon         {printf("reduce ");} 
   ;
 
@@ -341,3 +341,5 @@ Constant : _intconstant
 
 
 void yyerror (char *s){fprintf (stderr, "%s\n", s);}
+
+
