@@ -7,7 +7,7 @@ void yyerror (char *s);
 %}
 
 /* yacc definitions */
-%start program
+%start Program
 
 %token _boolean
 %token _break
@@ -63,125 +63,264 @@ void yyerror (char *s);
 %token _epsilon
 
 
-
+%left _leftbracket _period
+%left _multiplication _division _mod
+%left _plus _not _minus
+%left _greater _greaterequal _less _lessequal
+%left _equal _notequal
+%left _and
+%left _or
+%left _assignop
 /* CFG here */
 %%
 
 /*descriptions of expected inputs       correspoinding actions (in C)*/
-program : Decl _plus        ';'         {printf("reduce ");}
+
+ /*
+   Progrma ::= Decl+
+  */
+Program : Decl        {printf("reduce ");}
+  | Program Decl 
+  ;
+
+/*
+  Decl ::= VariableDecl 
+        | FunctionDecl
+	| ClassDecl
+	| InterfaceDecl
+ */
+Decl: VariableDecl _semicolon        {printf("reduce ");}
+  | FunctionDecl  _semicolon         {printf("reduce ");}         
+  | ClassDecl     _semicolon      {printf("reduce ");}
+  | InterfaceDecl _semicolon         {printf("reduce ");} 
+  ;
+
+/*
+  Variable ;
+ */
+VariableDecl:   Variable _semicolon
+
+/*
+  Variable ::= Type id
+ */
+Variable:   Type _id  _semicolon
+
+
+/*
+  Type ::= int
+        | double
+	| boolean 
+	| string
+	| Type []
+	| id
+ */
+Type:   _int      _semicolon
+  |   _double   _semicolon
+  |   _boolean  _semicolon
+  |   _string  _semicolon
+  |   Type _leftbracket _rightbracket _semicolon
+  |   _id       _semicolon
+  ;
+
+/* FunctionDecl ::= Type id (Formals) StmtBlock 
+                 | void id (Formals) StmtBlock 
+*/
+FunctionDecl:   Type _id _leftparen Formals _rightparen StmtBlock _semicolon
+  |   _void _id _leftparen Formals _rightparen StmtBlock _semicolon
+  ;
+
+/* Formals ::= Variable+, | epsilon(nothing) */
+Formals:   Variable _plus ';'
+  |  ""
+  ;
+
+/* ClassDecl ::= class id <extends id> <implements id+,> { Field* } */
+ClassDecl: _class _id _leftbrace Field _rightbrace ';'
+  | _class _id _extends _id _leftbrace Field _rightbrace ';'
+  | _class _id _extends _id _implements ClassIds _leftbrace Field _rightbrace ';'
+  ;
+
+ClassIds: _id
+  | ',' ClassIds
+  ;
+
+
+/* 
+   Field ::= VariableDecl ;
+          | FunctionDecl ;
+*/
+Field: VariableDecl ';'
+  | FunctionDecl ';'
+  ;
+
+/*
+  InterfaceDecl ::= interface id { Protype* }
+ */
+InterfaceDecl:   _interface _id _leftbrace Prototype _rightbrace _semicolon
+  ;
+
+/*
+  Prototype ::= Type id (Formals); 
+             | void id (Formals);
+*/
+Prototype: Type _id _leftparen Formals _rightparen _semicolon
+  | _void _id _leftparen Formals _rightparen _semicolon
+  ;
+
+/*
+  StmtBlock ::= { VariableDecl* Stmt* }
+ */
+StmtBlock: _leftbrace VariableDecl Stmt _rightbrace _semicolon
+  ;
+
+
+/*
+  Stmt ::= <Expr> ;
+        | IfStmt
+        | WhileStmt
+	| ForStmt
+	| BreakStmt
+	| ReturnStmt  
+	| PrintStmt
+	| StmtBlock
+ */
+Stmt:  Expr _semicolon
+  |  IfStmt 
+  |  WhileStmt
+  |  ForStmt 
+  |  BreakStmt _semicolon
+  |  ReturnStmt _semicolon
+  |  PrintStmt _semicolon
+  |  StmtBlock 
+  ;
+
+/* 
+   if (Expr) Stmt <else Stmt> 
+*/
+IfStmt: _if Expr Stmt _else Stmt
+  | _if Expr Stmt
+  ;
+
+
+/*
+  WhileStmt ::= while (Expr) Stmt
+ */
+WhileStmt: _while _leftparen Expr _rightparen Stmt 
+  ;
+
+/*
+  ForSmt ::= for (<Expr> ; Expr; <Expr>) Stmt
+ */
+ForStmt: _for _leftparen ForExpr _semicolon Expr _semicolon ForExpr _rightparen Stmt
+  ;
+
+ForExpr: Expr
+  | /*NULL*/
+  ;
+
+/*
+  BreakStmt ::= break ;
+ */
+BreakStmt: _break _semicolon 
+  ;
+
+
+/*
+  ReturnStmt ::= return <Expr>;
+ */
+ReturnStmt : _return Expr _semicolon
+  | _return _semicolon
+  ;
+
+/*
+  PrintStmt ::= println(Expr+,);
+ */
+PrintStmt: _println _leftparen PrintEnc _rightparen _semicolon 
+  ;
+
+
+PrintEnc: Expr
+  | PrintEnc _comma Expr
+  ;
+
+
+/*
+  Expr ::= Lvalue = Expr 
+        | Constant
+	| Lvalue
+	| Call
+	| ( Expr )
+	| Expr + Expr 
+	| Expr - Expr
+	| Expr * Expr
+	| Expr / Expr
+	| Expr % Expr
+	| -Expr
+	| Expr < Expr
+	| you get the point...
+ */
+Expr: Lvalue _assignop Expr 
+  | Constant 
+  | Lvalue 
+  | Call 
+  | _leftparen Expr _rightparen 
+  | Expr _plus Expr 
+  | Expr _minus Expr 
+  | Expr _multiplication Expr  
+  | Expr _division Expr  
+  | Expr _mod Expr 
+  | _minus Expr 
+  | Expr _less Expr 
+  | Expr _lessequal Expr 
+  | Expr _greater Expr 
+  | Expr _greatereequal Expr 
+  | Expr _equal Expr 
+  | Expr _notequal Expr 
+  | Expr _and Expr 
+  | Expr _or Expr 
+  | Expr 
+  | _not Expr 
+  | _readln _leftparen _rightparen 
+  | _newarray _leftparen _intconstant _comma Type _rightparen 
+  ;
+
+/*
+  Lvalue ::= id 
+          | Lvalue [ Expr ]
+	  | Lvalue . id
+ */
+Lvalue: _id 
+  | Lvalue _leftbracket Expr _rightbracket 
+  | Lvalue _period _id 
+  ;
+
+/*
+  Call ::= id (Actuals) 
+        | id . id (Actuals)
+ */
+Call: _id _leftparen Actuals _rightparen 
+  | _id _period _id _leftparen Actuals _rightparen
+  ;
+
+/*
+  Actuals ::= Expr+,
+           | epsilon
+ */
+Actuals : Expr
+        | Actuals _comma Expr
+        |  
         ;
 
-Decl    : VariableDecl      ';'         {printf("reduce ");}
-        | FunctionDecl      ';'         {printf("reduce ");}         
-        | ClassDecl         ';'         {printf("reduce ");}
-        | InterfaceDecl     ';'         {printf("reduce ");}
-        ;
-
-VariableDecl:   Variable  ';'
-
-Variable    :   Type _id  ';'
-Type        :   _int      ';'
-            |   _double   ';'
-            |   _boolean  ';'  
-            |   _string   ';'  
-            |   Type _leftbracket _rightbracket ';'
-            |   _id       ';'
-            ;
-
-FunctionDecl:   Type _id _leftparen Formals _rightparen StmtBlock ';'
-            |   _void _id _leftparen Formals _rightparen StmtBlock';'
-            ;
-
-Formals     :   Variable _plus ';'
-            |   _epsilon       ';'
-            ;
-
-ClassDecl: _class _id _less _extends _id _greater _less _implements _id _plus _comma _greater _leftbrace Field _multiplication _rightbrace ';'
-         ;
-
-Field   : VariableDecl ';'
-        | FunctionDecl ';'
-        ;
-
-InterfaceDecl   :   _interface _id _leftbrace Prototype _multiplication _rightbrace ';'
-                ;
-Prototype   : Type _id _leftparen Formals _rightparen _semicolon ';'
-            | _void _id _leftparen Formals _rightparen _semicolon ';'
-            ;
-
-StmtBlock   : _leftbrace VariableDecl _multiplication Stmt _multiplication _rightbrace ';'
-            ;
-
-Stmt :  _less Expr _greater _semicolon ';'
-     |  IfStmt  ';'
-     |  WhileStmt ';'
-     |  ForStmt ';'
-     |  BreakStmt ';'
-     |  ReturnStmt ';'
-     |  PrintStmt ';'
-     |  StmtBlock   ';'
-     ;
-
-IfStmt :    _if _less Expr _greater Stmt _less _else Stmt _greater ';'
-       ;
-
-WhileStmt : _while _leftparen Expr _rightparen Stmt ';'
-          ;
-
-ForStmt : _for _leftparen _less Expr _greater _semicolon Expr _semicolon _less Expr _greater _rightparen Stmt ';'
-        ;
-
-BreakStmt   : _break _semicolon ';'
-            ;
-
-ReturnStmt :    _return _less Expr _greater _semicolon ';'
-           ;
-
-PrintStmt  : _println _leftparen Expr _plus _comma _rightparen _semicolon ';'
-           ;
-
-Expr    : Lvalue _assignop Expr ';'
-        | Constant ';'
-        | Lvalue ';'
-        | Call ';'
-        | _leftparen Expr _rightparen ';'
-        | Expr _plus Expr ';'
-        | Expr _minus Expr ';'
-        | Expr _multiplication Expr ';'
-        | Expr _division Expr ";"
-        | Expr _mod Expr ';'
-        | _minus Expr ';'
-        | Expr _less Expr ';'
-        | Expr _lessequal Expr ';'
-        | Expr _greater Expr ';'
-        | Expr _greatereequal Expr ';'
-        | Expr _equal Expr ';'
-        | Expr _notequal Expr ';'
-        | Expr _and Expr ';'
-        | Expr _or Expr ';'
-        | Expr ';'
-        | _not Expr ';'
-        | _readln _leftparen _rightparen ';'
-        | _newarray _leftparen _intconstant _comma Type _rightparen ';'
-        ;
-
-Lvalue  : _id ';'
-        | Lvalue _leftbracket Expr _rightbracket ';'
-        | Lvalue _period _id ';'
-        ;
-
-Call    : _id _leftparen Actuals _rightparen ';'
-        | _id _period _id _leftparen Actuals _rightparen ';'
-        ;
-
-Actuals : Expr _plus _comma ';'
-        | _epsilon ';'
-        ;
-
-Constant : _intconstant ';'
-         | _doubleconstant ';'
-         | _stringconstant ';'
-         | _booleanconstant ';'
+/*
+  Constant ::= intconstant
+            | doubleconstant
+	    | stringconstant
+	    | booleanconstant
+ */
+Constant : _intconstant 
+         | _doubleconstant 
+         | _stringconstant 
+         | _booleanconstant
          ;
 %%
 
