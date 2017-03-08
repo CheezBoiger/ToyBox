@@ -14,7 +14,7 @@
 
 int main(int c, char *args[])
 {
-  enum toylang token = yylex();
+  enum yytokentype token = yylex();
   struct trieArray myTrie;
   trieInit(&myTrie);
   // Initialize the parse engine with this algorithm.

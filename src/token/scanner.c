@@ -6,6 +6,7 @@
 
 
 #define LANG_KEY(lang, str) { lang, str }
+#define YACC_STARTING_INDEX 258
 
 /**
    Language table, holding information of Language.
@@ -71,5 +72,5 @@ struct toylang_pair *get_lang_table_pair(enum yytokentype token)
     debug("Improper enum => %d which is out of the bounds of ToyboxLang\n", token);
     return (void *)0;
   }
-  return &lang_table[token-1];
+  return &lang_table[token-YACC_STARTING_INDEX];
 }
