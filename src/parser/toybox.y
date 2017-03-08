@@ -116,12 +116,12 @@ Variable:   Type _id  _semicolon
 	| Type []
 	| id
  */
-Type:   _int      _semicolon
-  |   _double   _semicolon
-  |   _boolean  _semicolon
-  |   _string  _semicolon
-  |   Type _leftbracket _rightbracket _semicolon
-  |   _id       _semicolon
+Type:   _int   
+  |   _double   
+  |   _boolean 
+  |   _string  
+  |   Type _leftbracket _rightbracket
+  |   _id      
   ;
 
 /* FunctionDecl ::= Type id (Formals) StmtBlock 
@@ -137,9 +137,9 @@ Formals:   Variable _plus ';'
   ;
 
 /* ClassDecl ::= class id <extends id> <implements id+,> { Field* } */
-ClassDecl: _class _id _leftbrace Field _rightbrace ';'
-  | _class _id _extends _id _leftbrace Field _rightbrace ';'
-  | _class _id _extends _id _implements ClassIds _leftbrace Field _rightbrace ';'
+ClassDecl: _class _id _leftbrace Field _rightbrace 
+  | _class _id _extends _id _leftbrace Field _rightbrace 
+  | _class _id _extends _id _implements ClassIds _leftbrace Field _rightbrace 
   ;
 
 ClassIds: _id
@@ -158,7 +158,7 @@ Field: VariableDecl ';'
 /*
   InterfaceDecl ::= interface id { Protype* }
  */
-InterfaceDecl:   _interface _id _leftbrace Prototype _rightbrace _semicolon
+InterfaceDecl:   _interface _id _leftbrace Prototype _rightbrace
   ;
 
 /*
@@ -172,7 +172,7 @@ Prototype: Type _id _leftparen Formals _rightparen _semicolon
 /*
   StmtBlock ::= { VariableDecl* Stmt* }
  */
-StmtBlock: _leftbrace VariableDecl Stmt _rightbrace _semicolon
+StmtBlock: _leftbrace VariableDecl Stmt _rightbrace
   ;
 
 
@@ -190,9 +190,9 @@ Stmt:  Expr _semicolon
   |  IfStmt 
   |  WhileStmt
   |  ForStmt 
-  |  BreakStmt _semicolon
-  |  ReturnStmt _semicolon
-  |  PrintStmt _semicolon
+  |  BreakStmt
+  |  ReturnStmt
+  |  PrintStmt 
   |  StmtBlock 
   ;
 
