@@ -5,12 +5,16 @@
 #include <stdlib.h>
 
 #include <lex/lexical.h>
+#include <parser/parser.h>
+#include <parser/slr.h>
 
 
-extern int yyparse();
-extern 
+//extern int yyparse();
+
 int main(int c, char *args[])
 {
-  yyparse();
+  toy_parser_init(slr_parse_algorithm);
+  // No input needed, yacc and lex handle most of it.
+  toy_parse(NULL, 0);
   return 0;
 }
