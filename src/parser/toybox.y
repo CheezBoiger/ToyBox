@@ -73,7 +73,10 @@ void yyerror (char *s);
 %left _and
 %left _or
 %left _assignop
-/* CFG here */
+
+
+%glr-parser
+ /* CFG here */
 %%
 
 Program:
@@ -86,17 +89,17 @@ Decl
  */
 Decl:
 /* NULL */
-| VariableDecl { printf("[reduce 1]\n"); }
-| ClassDecl    { printf("[reduce 2]\n"); }
-| InterfaceDecl{ printf("[reduce 3]\n"); }
-| FunctionDecl { printf("[reduce 4]\n"); }
+| VariableDecl Decl { printf("[reduce 1]\n"); }
+| ClassDecl   Decl  { printf("[reduce 2]\n"); }
+| InterfaceDecl Decl { printf("[reduce 3]\n"); }
+| FunctionDecl Decl { printf("[reduce 4]\n"); }
 ;
 
 /*
   Item 2
  */
 VariableDecl:
-Variable _semicolon{ printf("[reduce 5]\n"); }
+Variable _semicolon { printf("[reduce 5]\n"); }
 ;
 
 /*
@@ -125,7 +128,7 @@ Type:
   Item 5
  */
 ClassDecl:
-_class _id ExtendClass ImplementClass _leftbrace Field _rightbrace Decl { printf("[reduce 13]\n"); }
+_class _id ExtendClass ImplementClass _leftbrace Field _rightbrace { printf("[reduce 13]\n"); }
 ;
 
 /*
@@ -156,7 +159,7 @@ _id
   Item 9
  */
 InterfaceDecl:
-_interface _id _leftbrace Prototype _rightbrace Decl { printf("[reduce 17]\n"); }
+_interface _id _leftbrace Prototype _rightbrace { printf("[reduce 17]\n"); }
 ;
 
 /*
@@ -181,13 +184,14 @@ Variable
  */
 Field:
 VariableDecl { printf("[reduce 20]\n"); }
+|
 ;
 
 /*
   Item 13
  */
 FunctionDecl:
-Type _id _leftparen Formals _rightparen StmtBlock Decl { printf("[reduce 21]\n"); }
+Type _id _leftparen Formals _rightparen StmtBlock { printf("[reduce 21]\n"); }
 ; 
 
 /*
@@ -202,8 +206,8 @@ _leftbrace StmtDeclares Stmt _rightbrace { printf("[reduce 22]\n"); }
   Item 15
  */
 StmtDeclares:
-|
 VariableDecl { printf("[reduce 23]\n"); }
+|
 ;
 
 
@@ -260,16 +264,22 @@ Lvalue _assignop Expr       { printf("[reduce 25]\n"); }
   are fine, hopefully they don't conflict with you).
  */
 Lvalue:
-_id                                         { printf("[reduce 46]\n"); }
-| Lvalue _leftbracket Expr _rightbracket    { printf("[reduce 47]\n"); }
-| Lvalue _period _id                        { printf("[reduce 48]\n"); }
-| Lvalue _assignop Expr                     { printf("[reduce 49]\n"); }
+_id LHelper                                 { printf("[reduce 46]\n"); }
 ;
+
+
+LHelper:
+_leftbracket Expr _rightbracket LHelper  { printf("[reduce 47]\n"); }
+| _period _id LHelper                       { printf("[reduce 48]\n"); }
+|
+;
+
 
 Call:
 _id _leftparen Actuals _rightparen                  { printf("[reduce 50]\n"); }
 | _id _period _id _leftparen Actuals _rightparen    { printf("[reduce 51]\n"); }
 ;
+
 
 Actuals:
 Expr    { printf("[reduce 52]\n"); }

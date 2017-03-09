@@ -1,8 +1,8 @@
 /* A Bison parser, made by GNU Bison 3.0.4.  */
 
-/* Bison interface for Yacc-like parsers in C
+/* Skeleton interface for Bison GLR parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
+   Copyright (C) 2002-2015 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -98,58 +98,6 @@ extern int yydebug;
     _greaterequal = 308
   };
 #endif
-/* Tokens.  */
-#define _boolean 258
-#define _break 259
-#define _class 260
-#define _double 261
-#define _else 262
-#define _extends 263
-#define _false 264
-#define _for 265
-#define _if 266
-#define _implements 267
-#define _int 268
-#define _interface 269
-#define _newarray 270
-#define _println 271
-#define _readln 272
-#define _return 273
-#define _string 274
-#define _true 275
-#define _void 276
-#define _while 277
-#define _plus 278
-#define _minus 279
-#define _multiplication 280
-#define _division 281
-#define _mod 282
-#define _less 283
-#define _lessequal 284
-#define _greater 285
-#define _greatereequal 286
-#define _equal 287
-#define _notequal 288
-#define _and 289
-#define _or 290
-#define _not 291
-#define _assignop 292
-#define _semicolon 293
-#define _comma 294
-#define _period 295
-#define _leftparen 296
-#define _rightparen 297
-#define _leftbracket 298
-#define _rightbracket 299
-#define _leftbrace 300
-#define _rightbrace 301
-#define _intconstant 302
-#define _doubleconstant 303
-#define _stringconstant 304
-#define _booleanconstant 305
-#define _id 306
-#define _epsilon 307
-#define _greaterequal 308
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
