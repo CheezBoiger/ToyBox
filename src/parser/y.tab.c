@@ -1412,7 +1412,8 @@ yybackup:
     yyerrstatus--;
 
   /* Shift the lookahead token.  */
-  YY_SYMBOL_PRINT ("Shifting", yytoken, &yylval, &yylloc);
+  YY_SYMBOL_PRINT ("Shifting", yytoken, &yylval, &yylloc);;
+  printf("Shift %d\n", yytoken);
 
   /* Discard the shifted token.  */
   yychar = YYEMPTY;
