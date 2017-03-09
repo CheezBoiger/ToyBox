@@ -16,7 +16,7 @@ Terminals unused in grammar
 
 Rules useless in parser due to conflicts
 
-   60 Lvalue: Lvalue _assignop Expr
+   59 Lvalue: Lvalue _assignop Expr
 
 
 State 49 conflicts: 1 shift/reduce
@@ -69,54 +69,53 @@ Grammar
    27        | %empty
 
    28 Field: VariableDecl
-   29      | %empty
 
-   30 FunctionDecl: Type _id _leftparen Formals _rightparen StmtBlock Decl
+   29 FunctionDecl: Type _id _leftparen Formals _rightparen StmtBlock Decl
 
-   31 StmtBlock: _leftparen StmtDeclares Stmt _rightparen
+   30 StmtBlock: _leftparen StmtDeclares Stmt _rightparen
 
-   32 StmtDeclares: VariableDecl
-   33             | %empty
+   31 StmtDeclares: VariableDecl
+   32             | %empty
 
-   34 Stmt: Expr _semicolon Stmt
-   35     | %empty
+   33 Stmt: Expr _semicolon Stmt
+   34     | %empty
 
-   36 Expr: Lvalue _assignop Expr
-   37     | Constant
-   38     | Lvalue
-   39     | Call
-   40     | Expr _plus Expr
-   41     | Expr _minus Expr
-   42     | Expr _multiplication Expr
-   43     | Expr _division Expr
-   44     | Expr _mod Expr
-   45     | _minus Expr
-   46     | Expr _less Expr
-   47     | Expr _lessequal Expr
-   48     | Expr _greater Expr
-   49     | Expr _greaterequal Expr
-   50     | Expr _equal Expr
-   51     | Expr _notequal Expr
-   52     | Expr _and Expr
-   53     | Expr _or Expr
-   54     | _not Expr
-   55     | _readln _leftparen _rightparen
-   56     | _newarray _leftparen _intconstant _comma Type _rightparen
+   35 Expr: Lvalue _assignop Expr
+   36     | Constant
+   37     | Lvalue
+   38     | Call
+   39     | Expr _plus Expr
+   40     | Expr _minus Expr
+   41     | Expr _multiplication Expr
+   42     | Expr _division Expr
+   43     | Expr _mod Expr
+   44     | _minus Expr
+   45     | Expr _less Expr
+   46     | Expr _lessequal Expr
+   47     | Expr _greater Expr
+   48     | Expr _greaterequal Expr
+   49     | Expr _equal Expr
+   50     | Expr _notequal Expr
+   51     | Expr _and Expr
+   52     | Expr _or Expr
+   53     | _not Expr
+   54     | _readln _leftparen _rightparen
+   55     | _newarray _leftparen _intconstant _comma Type _rightparen
 
-   57 Lvalue: _id
-   58       | Lvalue _leftbracket Expr _rightbracket
-   59       | Lvalue _period _id
-   60       | Lvalue _assignop Expr
+   56 Lvalue: _id
+   57       | Lvalue _leftbracket Expr _rightbracket
+   58       | Lvalue _period _id
+   59       | Lvalue _assignop Expr
 
-   61 Call: _id _leftparen Actuals _rightparen
-   62     | _id _period _id _leftparen Actuals _rightparen
+   60 Call: _id _leftparen Actuals _rightparen
+   61     | _id _period _id _leftparen Actuals _rightparen
 
-   63 Actuals: Expr
+   62 Actuals: Expr
 
-   64 Constant: _intconstant
-   65         | _doubleconstant
-   66         | _stringconstant
-   67         | _booleanconstant
+   63 Constant: _intconstant
+   64         | _doubleconstant
+   65         | _stringconstant
+   66         | _booleanconstant
 
 
 Terminals, with rules where they appear
@@ -135,45 +134,45 @@ _if (266)
 _implements (267) 18
 _int (268) 10
 _interface (269) 22
-_newarray (270) 56
+_newarray (270) 55
 _println (271)
-_readln (272) 55
+_readln (272) 54
 _return (273)
 _string (274) 12
 _true (275)
 _void (276)
 _while (277)
-_plus (278) 40
-_minus (279) 41 45
-_multiplication (280) 42
-_division (281) 43
-_mod (282) 44
-_less (283) 46
-_lessequal (284) 47
-_greater (285) 48
+_plus (278) 39
+_minus (279) 40 44
+_multiplication (280) 41
+_division (281) 42
+_mod (282) 43
+_less (283) 45
+_lessequal (284) 46
+_greater (285) 47
 _greatereequal (286)
-_equal (287) 50
-_notequal (288) 51
-_and (289) 52
-_or (290) 53
-_not (291) 54
-_assignop (292) 36 60
-_semicolon (293) 7 23 34
-_comma (294) 21 26 56
-_period (295) 59 62
-_leftparen (296) 23 30 31 55 56 61 62
-_rightparen (297) 23 30 31 55 56 61 62
-_leftbracket (298) 13 58
-_rightbracket (299) 13 58
+_equal (287) 49
+_notequal (288) 50
+_and (289) 51
+_or (290) 52
+_not (291) 53
+_assignop (292) 35 59
+_semicolon (293) 7 23 33
+_comma (294) 21 26 55
+_period (295) 58 61
+_leftparen (296) 23 29 30 54 55 60 61
+_rightparen (297) 23 29 30 54 55 60 61
+_leftbracket (298) 13 57
+_rightbracket (299) 13 57
 _leftbrace (300) 15 22
 _rightbrace (301) 15 22
-_intconstant (302) 56 64
-_doubleconstant (303) 65
-_stringconstant (304) 66
-_booleanconstant (305) 67
-_id (306) 8 14 15 16 20 21 22 23 30 57 59 61 62
+_intconstant (302) 55 63
+_doubleconstant (303) 64
+_stringconstant (304) 65
+_booleanconstant (305) 66
+_id (306) 8 14 15 16 20 21 22 23 29 56 58 60 61
 _epsilon (307)
-_greaterequal (308) 49
+_greaterequal (308) 48
 
 
 Nonterminals, with rules where they appear
@@ -183,13 +182,13 @@ $accept (54)
 Program (55)
     on left: 1, on right: 0
 Decl (56)
-    on left: 2 3 4 5 6, on right: 1 15 22 30
+    on left: 2 3 4 5 6, on right: 1 15 22 29
 VariableDecl (57)
-    on left: 7, on right: 3 28 32
+    on left: 7, on right: 3 28 31
 Variable (58)
     on left: 8, on right: 7 25 26
 Type (59)
-    on left: 9 10 11 12 13 14, on right: 8 13 23 30 56
+    on left: 9 10 11 12 13 14, on right: 8 13 23 29 55
 ClassDecl (60)
     on left: 15, on right: 4
 ExtendClass (61)
@@ -203,29 +202,29 @@ InterfaceDecl (64)
 Prototype (65)
     on left: 23 24, on right: 22 23
 Formals (66)
-    on left: 25 26 27, on right: 23 26 30
+    on left: 25 26 27, on right: 23 26 29
 Field (67)
-    on left: 28 29, on right: 15
+    on left: 28, on right: 15
 FunctionDecl (68)
-    on left: 30, on right: 6
+    on left: 29, on right: 6
 StmtBlock (69)
-    on left: 31, on right: 30
+    on left: 30, on right: 29
 StmtDeclares (70)
-    on left: 32 33, on right: 31
+    on left: 31 32, on right: 30
 Stmt (71)
-    on left: 34 35, on right: 31 34
+    on left: 33 34, on right: 30 33
 Expr (72)
-    on left: 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53
-    54 55 56, on right: 34 36 40 41 42 43 44 45 46 47 48 49 50 51 52
-    53 54 58 60 63
+    on left: 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52
+    53 54 55, on right: 33 35 39 40 41 42 43 44 45 46 47 48 49 50 51
+    52 53 57 59 62
 Lvalue (73)
-    on left: 57 58 59 60, on right: 36 38 58 59 60
+    on left: 56 57 58 59, on right: 35 37 57 58 59
 Call (74)
-    on left: 61 62, on right: 39
+    on left: 60 61, on right: 38
 Actuals (75)
-    on left: 63, on right: 61 62
+    on left: 62, on right: 60 61
 Constant (76)
-    on left: 64 65 66 67, on right: 37
+    on left: 63 64 65 66, on right: 36
 
 
 State 0
@@ -333,7 +332,7 @@ State 12
 
     8 Variable: Type . _id
    13 Type: Type . _leftbracket _rightbracket
-   30 FunctionDecl: Type . _id _leftparen Formals _rightparen StmtBlock Decl
+   29 FunctionDecl: Type . _id _leftparen Formals _rightparen StmtBlock Decl
 
     _leftbracket  shift, and go to state 20
     _id           shift, and go to state 21
@@ -402,7 +401,7 @@ State 20
 State 21
 
     8 Variable: Type _id .
-   30 FunctionDecl: Type _id . _leftparen Formals _rightparen StmtBlock Decl
+   29 FunctionDecl: Type _id . _leftparen Formals _rightparen StmtBlock Decl
 
     _leftparen  shift, and go to state 26
 
@@ -452,7 +451,7 @@ State 25
 
 State 26
 
-   30 FunctionDecl: Type _id _leftparen . Formals _rightparen StmtBlock Decl
+   29 FunctionDecl: Type _id _leftparen . Formals _rightparen StmtBlock Decl
 
     _boolean  shift, and go to state 1
     _double   shift, and go to state 3
@@ -527,7 +526,7 @@ State 33
 
 State 34
 
-   30 FunctionDecl: Type _id _leftparen Formals . _rightparen StmtBlock Decl
+   29 FunctionDecl: Type _id _leftparen Formals . _rightparen StmtBlock Decl
 
     _rightparen  shift, and go to state 42
 
@@ -558,8 +557,6 @@ State 37
     _int      shift, and go to state 4
     _string   shift, and go to state 6
     _id       shift, and go to state 7
-
-    $default  reduce using rule 29 (Field)
 
     VariableDecl  go to state 44
     Variable      go to state 11
@@ -623,7 +620,7 @@ State 41
 
 State 42
 
-   30 FunctionDecl: Type _id _leftparen Formals _rightparen . StmtBlock Decl
+   29 FunctionDecl: Type _id _leftparen Formals _rightparen . StmtBlock Decl
 
     _leftparen  shift, and go to state 49
 
@@ -686,7 +683,7 @@ State 48
 
 State 49
 
-   31 StmtBlock: _leftparen . StmtDeclares Stmt _rightparen
+   30 StmtBlock: _leftparen . StmtDeclares Stmt _rightparen
 
     _boolean  shift, and go to state 1
     _double   shift, and go to state 3
@@ -694,8 +691,8 @@ State 49
     _string   shift, and go to state 6
     _id       shift, and go to state 7
 
-    _id       [reduce using rule 33 (StmtDeclares)]
-    $default  reduce using rule 33 (StmtDeclares)
+    _id       [reduce using rule 32 (StmtDeclares)]
+    $default  reduce using rule 32 (StmtDeclares)
 
     VariableDecl  go to state 54
     Variable      go to state 11
@@ -705,7 +702,7 @@ State 49
 
 State 50
 
-   30 FunctionDecl: Type _id _leftparen Formals _rightparen StmtBlock . Decl
+   29 FunctionDecl: Type _id _leftparen Formals _rightparen StmtBlock . Decl
 
     _boolean    shift, and go to state 1
     _class      shift, and go to state 2
@@ -765,14 +762,14 @@ State 53
 
 State 54
 
-   32 StmtDeclares: VariableDecl .
+   31 StmtDeclares: VariableDecl .
 
-    $default  reduce using rule 32 (StmtDeclares)
+    $default  reduce using rule 31 (StmtDeclares)
 
 
 State 55
 
-   31 StmtBlock: _leftparen StmtDeclares . Stmt _rightparen
+   30 StmtBlock: _leftparen StmtDeclares . Stmt _rightparen
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -784,7 +781,7 @@ State 55
     _booleanconstant  shift, and go to state 66
     _id               shift, and go to state 67
 
-    $default  reduce using rule 35 (Stmt)
+    $default  reduce using rule 34 (Stmt)
 
     Stmt      go to state 68
     Expr      go to state 69
@@ -795,9 +792,9 @@ State 55
 
 State 56
 
-   30 FunctionDecl: Type _id _leftparen Formals _rightparen StmtBlock Decl .
+   29 FunctionDecl: Type _id _leftparen Formals _rightparen StmtBlock Decl .
 
-    $default  reduce using rule 30 (FunctionDecl)
+    $default  reduce using rule 29 (FunctionDecl)
 
 
 State 57
@@ -816,21 +813,21 @@ State 58
 
 State 59
 
-   56 Expr: _newarray . _leftparen _intconstant _comma Type _rightparen
+   55 Expr: _newarray . _leftparen _intconstant _comma Type _rightparen
 
     _leftparen  shift, and go to state 74
 
 
 State 60
 
-   55 Expr: _readln . _leftparen _rightparen
+   54 Expr: _readln . _leftparen _rightparen
 
     _leftparen  shift, and go to state 75
 
 
 State 61
 
-   45 Expr: _minus . Expr
+   44 Expr: _minus . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -850,7 +847,7 @@ State 61
 
 State 62
 
-   54 Expr: _not . Expr
+   53 Expr: _not . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -870,68 +867,68 @@ State 62
 
 State 63
 
-   64 Constant: _intconstant .
+   63 Constant: _intconstant .
 
-    $default  reduce using rule 64 (Constant)
+    $default  reduce using rule 63 (Constant)
 
 
 State 64
 
-   65 Constant: _doubleconstant .
+   64 Constant: _doubleconstant .
 
-    $default  reduce using rule 65 (Constant)
+    $default  reduce using rule 64 (Constant)
 
 
 State 65
 
-   66 Constant: _stringconstant .
+   65 Constant: _stringconstant .
 
-    $default  reduce using rule 66 (Constant)
+    $default  reduce using rule 65 (Constant)
 
 
 State 66
 
-   67 Constant: _booleanconstant .
+   66 Constant: _booleanconstant .
 
-    $default  reduce using rule 67 (Constant)
+    $default  reduce using rule 66 (Constant)
 
 
 State 67
 
-   57 Lvalue: _id .
-   61 Call: _id . _leftparen Actuals _rightparen
-   62     | _id . _period _id _leftparen Actuals _rightparen
+   56 Lvalue: _id .
+   60 Call: _id . _leftparen Actuals _rightparen
+   61     | _id . _period _id _leftparen Actuals _rightparen
 
     _period     shift, and go to state 78
     _leftparen  shift, and go to state 79
 
-    _period   [reduce using rule 57 (Lvalue)]
-    $default  reduce using rule 57 (Lvalue)
+    _period   [reduce using rule 56 (Lvalue)]
+    $default  reduce using rule 56 (Lvalue)
 
 
 State 68
 
-   31 StmtBlock: _leftparen StmtDeclares Stmt . _rightparen
+   30 StmtBlock: _leftparen StmtDeclares Stmt . _rightparen
 
     _rightparen  shift, and go to state 80
 
 
 State 69
 
-   34 Stmt: Expr . _semicolon Stmt
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
+   33 Stmt: Expr . _semicolon Stmt
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
 
     _plus            shift, and go to state 81
     _minus           shift, and go to state 82
@@ -951,34 +948,34 @@ State 69
 
 State 70
 
-   36 Expr: Lvalue . _assignop Expr
-   38     | Lvalue .
-   58 Lvalue: Lvalue . _leftbracket Expr _rightbracket
-   59       | Lvalue . _period _id
-   60       | Lvalue . _assignop Expr
+   35 Expr: Lvalue . _assignop Expr
+   37     | Lvalue .
+   57 Lvalue: Lvalue . _leftbracket Expr _rightbracket
+   58       | Lvalue . _period _id
+   59       | Lvalue . _assignop Expr
 
     _assignop     shift, and go to state 95
     _period       shift, and go to state 96
     _leftbracket  shift, and go to state 97
 
-    _assignop     [reduce using rule 38 (Expr)]
-    _period       [reduce using rule 38 (Expr)]
-    _leftbracket  [reduce using rule 38 (Expr)]
-    $default      reduce using rule 38 (Expr)
+    _assignop     [reduce using rule 37 (Expr)]
+    _period       [reduce using rule 37 (Expr)]
+    _leftbracket  [reduce using rule 37 (Expr)]
+    $default      reduce using rule 37 (Expr)
 
 
 State 71
 
-   39 Expr: Call .
+   38 Expr: Call .
 
-    $default  reduce using rule 39 (Expr)
+    $default  reduce using rule 38 (Expr)
 
 
 State 72
 
-   37 Expr: Constant .
+   36 Expr: Constant .
 
-    $default  reduce using rule 37 (Expr)
+    $default  reduce using rule 36 (Expr)
 
 
 State 73
@@ -999,34 +996,34 @@ State 73
 
 State 74
 
-   56 Expr: _newarray _leftparen . _intconstant _comma Type _rightparen
+   55 Expr: _newarray _leftparen . _intconstant _comma Type _rightparen
 
     _intconstant  shift, and go to state 99
 
 
 State 75
 
-   55 Expr: _readln _leftparen . _rightparen
+   54 Expr: _readln _leftparen . _rightparen
 
     _rightparen  shift, and go to state 100
 
 
 State 76
 
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   45     | _minus Expr .
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   44     | _minus Expr .
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
 
     _less          shift, and go to state 86
     _lessequal     shift, and go to state 87
@@ -1037,25 +1034,25 @@ State 76
     _or            shift, and go to state 92
     _greaterequal  shift, and go to state 94
 
-    $default  reduce using rule 45 (Expr)
+    $default  reduce using rule 44 (Expr)
 
 
 State 77
 
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
-   54     | _not Expr .
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
+   53     | _not Expr .
 
     _less          shift, and go to state 86
     _lessequal     shift, and go to state 87
@@ -1066,19 +1063,19 @@ State 77
     _or            shift, and go to state 92
     _greaterequal  shift, and go to state 94
 
-    $default  reduce using rule 54 (Expr)
+    $default  reduce using rule 53 (Expr)
 
 
 State 78
 
-   62 Call: _id _period . _id _leftparen Actuals _rightparen
+   61 Call: _id _period . _id _leftparen Actuals _rightparen
 
     _id  shift, and go to state 101
 
 
 State 79
 
-   61 Call: _id _leftparen . Actuals _rightparen
+   60 Call: _id _leftparen . Actuals _rightparen
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1099,14 +1096,14 @@ State 79
 
 State 80
 
-   31 StmtBlock: _leftparen StmtDeclares Stmt _rightparen .
+   30 StmtBlock: _leftparen StmtDeclares Stmt _rightparen .
 
-    $default  reduce using rule 31 (StmtBlock)
+    $default  reduce using rule 30 (StmtBlock)
 
 
 State 81
 
-   40 Expr: Expr _plus . Expr
+   39 Expr: Expr _plus . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1126,7 +1123,7 @@ State 81
 
 State 82
 
-   41 Expr: Expr _minus . Expr
+   40 Expr: Expr _minus . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1146,7 +1143,7 @@ State 82
 
 State 83
 
-   42 Expr: Expr _multiplication . Expr
+   41 Expr: Expr _multiplication . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1166,7 +1163,7 @@ State 83
 
 State 84
 
-   43 Expr: Expr _division . Expr
+   42 Expr: Expr _division . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1186,7 +1183,7 @@ State 84
 
 State 85
 
-   44 Expr: Expr _mod . Expr
+   43 Expr: Expr _mod . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1206,7 +1203,7 @@ State 85
 
 State 86
 
-   46 Expr: Expr _less . Expr
+   45 Expr: Expr _less . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1226,7 +1223,7 @@ State 86
 
 State 87
 
-   47 Expr: Expr _lessequal . Expr
+   46 Expr: Expr _lessequal . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1246,7 +1243,7 @@ State 87
 
 State 88
 
-   48 Expr: Expr _greater . Expr
+   47 Expr: Expr _greater . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1266,7 +1263,7 @@ State 88
 
 State 89
 
-   50 Expr: Expr _equal . Expr
+   49 Expr: Expr _equal . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1286,7 +1283,7 @@ State 89
 
 State 90
 
-   51 Expr: Expr _notequal . Expr
+   50 Expr: Expr _notequal . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1306,7 +1303,7 @@ State 90
 
 State 91
 
-   52 Expr: Expr _and . Expr
+   51 Expr: Expr _and . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1326,7 +1323,7 @@ State 91
 
 State 92
 
-   53 Expr: Expr _or . Expr
+   52 Expr: Expr _or . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1346,7 +1343,7 @@ State 92
 
 State 93
 
-   34 Stmt: Expr _semicolon . Stmt
+   33 Stmt: Expr _semicolon . Stmt
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1358,7 +1355,7 @@ State 93
     _booleanconstant  shift, and go to state 66
     _id               shift, and go to state 67
 
-    $default  reduce using rule 35 (Stmt)
+    $default  reduce using rule 34 (Stmt)
 
     Stmt      go to state 116
     Expr      go to state 69
@@ -1369,7 +1366,7 @@ State 93
 
 State 94
 
-   49 Expr: Expr _greaterequal . Expr
+   48 Expr: Expr _greaterequal . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1389,8 +1386,8 @@ State 94
 
 State 95
 
-   36 Expr: Lvalue _assignop . Expr
-   60 Lvalue: Lvalue _assignop . Expr
+   35 Expr: Lvalue _assignop . Expr
+   59 Lvalue: Lvalue _assignop . Expr
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1410,14 +1407,14 @@ State 95
 
 State 96
 
-   59 Lvalue: Lvalue _period . _id
+   58 Lvalue: Lvalue _period . _id
 
     _id  shift, and go to state 119
 
 
 State 97
 
-   58 Lvalue: Lvalue _leftbracket . Expr _rightbracket
+   57 Lvalue: Lvalue _leftbracket . Expr _rightbracket
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1444,41 +1441,41 @@ State 98
 
 State 99
 
-   56 Expr: _newarray _leftparen _intconstant . _comma Type _rightparen
+   55 Expr: _newarray _leftparen _intconstant . _comma Type _rightparen
 
     _comma  shift, and go to state 121
 
 
 State 100
 
-   55 Expr: _readln _leftparen _rightparen .
+   54 Expr: _readln _leftparen _rightparen .
 
-    $default  reduce using rule 55 (Expr)
+    $default  reduce using rule 54 (Expr)
 
 
 State 101
 
-   62 Call: _id _period _id . _leftparen Actuals _rightparen
+   61 Call: _id _period _id . _leftparen Actuals _rightparen
 
     _leftparen  shift, and go to state 122
 
 
 State 102
 
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
-   63 Actuals: Expr .
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
+   62 Actuals: Expr .
 
     _plus            shift, and go to state 81
     _minus           shift, and go to state 82
@@ -1494,32 +1491,61 @@ State 102
     _or              shift, and go to state 92
     _greaterequal    shift, and go to state 94
 
-    $default  reduce using rule 63 (Actuals)
+    $default  reduce using rule 62 (Actuals)
 
 
 State 103
 
-   61 Call: _id _leftparen Actuals . _rightparen
+   60 Call: _id _leftparen Actuals . _rightparen
 
     _rightparen  shift, and go to state 123
 
 
 State 104
 
-   40 Expr: Expr . _plus Expr
-   40     | Expr _plus Expr .
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
+   39 Expr: Expr . _plus Expr
+   39     | Expr _plus Expr .
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
+
+    _less          shift, and go to state 86
+    _lessequal     shift, and go to state 87
+    _greater       shift, and go to state 88
+    _equal         shift, and go to state 89
+    _notequal      shift, and go to state 90
+    _and           shift, and go to state 91
+    _or            shift, and go to state 92
+    _greaterequal  shift, and go to state 94
+
+    $default  reduce using rule 39 (Expr)
+
+
+State 105
+
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   40     | Expr _minus Expr .
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
 
     _less          shift, and go to state 86
     _lessequal     shift, and go to state 87
@@ -1533,23 +1559,25 @@ State 104
     $default  reduce using rule 40 (Expr)
 
 
-State 105
+State 106
 
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   41     | Expr _minus Expr .
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   41     | Expr _multiplication Expr .
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
 
+    _plus          shift, and go to state 81
+    _minus         shift, and go to state 82
     _less          shift, and go to state 86
     _lessequal     shift, and go to state 87
     _greater       shift, and go to state 88
@@ -1562,22 +1590,22 @@ State 105
     $default  reduce using rule 41 (Expr)
 
 
-State 106
+State 107
 
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   42     | Expr _multiplication Expr .
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   42     | Expr _division Expr .
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
 
     _plus          shift, and go to state 81
     _minus         shift, and go to state 82
@@ -1593,22 +1621,22 @@ State 106
     $default  reduce using rule 42 (Expr)
 
 
-State 107
+State 108
 
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   43     | Expr _division Expr .
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   43     | Expr _mod Expr .
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
 
     _plus          shift, and go to state 81
     _minus         shift, and go to state 82
@@ -1624,53 +1652,47 @@ State 107
     $default  reduce using rule 43 (Expr)
 
 
-State 108
-
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   44     | Expr _mod Expr .
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
-
-    _plus          shift, and go to state 81
-    _minus         shift, and go to state 82
-    _less          shift, and go to state 86
-    _lessequal     shift, and go to state 87
-    _greater       shift, and go to state 88
-    _equal         shift, and go to state 89
-    _notequal      shift, and go to state 90
-    _and           shift, and go to state 91
-    _or            shift, and go to state 92
-    _greaterequal  shift, and go to state 94
-
-    $default  reduce using rule 44 (Expr)
-
-
 State 109
 
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   46     | Expr _less Expr .
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   45     | Expr _less Expr .
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
+
+    _equal     shift, and go to state 89
+    _notequal  shift, and go to state 90
+    _and       shift, and go to state 91
+    _or        shift, and go to state 92
+
+    $default  reduce using rule 45 (Expr)
+
+
+State 110
+
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   46     | Expr _lessequal Expr .
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
 
     _equal     shift, and go to state 89
     _notequal  shift, and go to state 90
@@ -1680,22 +1702,22 @@ State 109
     $default  reduce using rule 46 (Expr)
 
 
-State 110
+State 111
 
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   47     | Expr _lessequal Expr .
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   47     | Expr _greater Expr .
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
 
     _equal     shift, and go to state 89
     _notequal  shift, and go to state 90
@@ -1705,22 +1727,117 @@ State 110
     $default  reduce using rule 47 (Expr)
 
 
-State 111
+State 112
 
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   48     | Expr _greater Expr .
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   49     | Expr _equal Expr .
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
+
+    _and  shift, and go to state 91
+    _or   shift, and go to state 92
+
+    $default  reduce using rule 49 (Expr)
+
+
+State 113
+
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   50     | Expr _notequal Expr .
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
+
+    _and  shift, and go to state 91
+    _or   shift, and go to state 92
+
+    $default  reduce using rule 50 (Expr)
+
+
+State 114
+
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   51     | Expr _and Expr .
+   52     | Expr . _or Expr
+
+    _or  shift, and go to state 92
+
+    $default  reduce using rule 51 (Expr)
+
+
+State 115
+
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
+   52     | Expr _or Expr .
+
+    $default  reduce using rule 52 (Expr)
+
+
+State 116
+
+   33 Stmt: Expr _semicolon Stmt .
+
+    $default  reduce using rule 33 (Stmt)
+
+
+State 117
+
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   48     | Expr _greaterequal Expr .
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
 
     _equal     shift, and go to state 89
     _notequal  shift, and go to state 90
@@ -1730,208 +1847,88 @@ State 111
     $default  reduce using rule 48 (Expr)
 
 
-State 112
-
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   50     | Expr _equal Expr .
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
-
-    _and  shift, and go to state 91
-    _or   shift, and go to state 92
-
-    $default  reduce using rule 50 (Expr)
-
-
-State 113
-
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   51     | Expr _notequal Expr .
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
-
-    _and  shift, and go to state 91
-    _or   shift, and go to state 92
-
-    $default  reduce using rule 51 (Expr)
-
-
-State 114
-
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   52     | Expr _and Expr .
-   53     | Expr . _or Expr
-
-    _or  shift, and go to state 92
-
-    $default  reduce using rule 52 (Expr)
-
-
-State 115
-
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
-   53     | Expr _or Expr .
-
-    $default  reduce using rule 53 (Expr)
-
-
-State 116
-
-   34 Stmt: Expr _semicolon Stmt .
-
-    $default  reduce using rule 34 (Stmt)
-
-
-State 117
-
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   49     | Expr _greaterequal Expr .
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
-
-    _equal     shift, and go to state 89
-    _notequal  shift, and go to state 90
-    _and       shift, and go to state 91
-    _or        shift, and go to state 92
-
-    $default  reduce using rule 49 (Expr)
-
-
 State 118
 
-   36 Expr: Lvalue _assignop Expr .
-   40     | Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
-   60 Lvalue: Lvalue _assignop Expr .
+   35 Expr: Lvalue _assignop Expr .
+   39     | Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
+   59 Lvalue: Lvalue _assignop Expr .
 
-    _plus            reduce using rule 36 (Expr)
-    _plus            [reduce using rule 60 (Lvalue)]
-    _minus           reduce using rule 36 (Expr)
-    _minus           [reduce using rule 60 (Lvalue)]
-    _multiplication  reduce using rule 36 (Expr)
-    _multiplication  [reduce using rule 60 (Lvalue)]
-    _division        reduce using rule 36 (Expr)
-    _division        [reduce using rule 60 (Lvalue)]
-    _mod             reduce using rule 36 (Expr)
-    _mod             [reduce using rule 60 (Lvalue)]
-    _less            reduce using rule 36 (Expr)
-    _less            [reduce using rule 60 (Lvalue)]
-    _lessequal       reduce using rule 36 (Expr)
-    _lessequal       [reduce using rule 60 (Lvalue)]
-    _greater         reduce using rule 36 (Expr)
-    _greater         [reduce using rule 60 (Lvalue)]
-    _equal           reduce using rule 36 (Expr)
-    _equal           [reduce using rule 60 (Lvalue)]
-    _notequal        reduce using rule 36 (Expr)
-    _notequal        [reduce using rule 60 (Lvalue)]
-    _and             reduce using rule 36 (Expr)
-    _and             [reduce using rule 60 (Lvalue)]
-    _or              reduce using rule 36 (Expr)
-    _or              [reduce using rule 60 (Lvalue)]
-    _assignop        reduce using rule 36 (Expr)
-    _assignop        [reduce using rule 60 (Lvalue)]
-    _semicolon       reduce using rule 36 (Expr)
-    _semicolon       [reduce using rule 60 (Lvalue)]
-    _period          reduce using rule 36 (Expr)
-    _period          [reduce using rule 60 (Lvalue)]
-    _rightparen      reduce using rule 36 (Expr)
-    _rightparen      [reduce using rule 60 (Lvalue)]
-    _leftbracket     reduce using rule 36 (Expr)
-    _leftbracket     [reduce using rule 60 (Lvalue)]
-    _rightbracket    reduce using rule 36 (Expr)
-    _rightbracket    [reduce using rule 60 (Lvalue)]
-    _greaterequal    reduce using rule 36 (Expr)
-    _greaterequal    [reduce using rule 60 (Lvalue)]
-    $default         reduce using rule 36 (Expr)
+    _plus            reduce using rule 35 (Expr)
+    _plus            [reduce using rule 59 (Lvalue)]
+    _minus           reduce using rule 35 (Expr)
+    _minus           [reduce using rule 59 (Lvalue)]
+    _multiplication  reduce using rule 35 (Expr)
+    _multiplication  [reduce using rule 59 (Lvalue)]
+    _division        reduce using rule 35 (Expr)
+    _division        [reduce using rule 59 (Lvalue)]
+    _mod             reduce using rule 35 (Expr)
+    _mod             [reduce using rule 59 (Lvalue)]
+    _less            reduce using rule 35 (Expr)
+    _less            [reduce using rule 59 (Lvalue)]
+    _lessequal       reduce using rule 35 (Expr)
+    _lessequal       [reduce using rule 59 (Lvalue)]
+    _greater         reduce using rule 35 (Expr)
+    _greater         [reduce using rule 59 (Lvalue)]
+    _equal           reduce using rule 35 (Expr)
+    _equal           [reduce using rule 59 (Lvalue)]
+    _notequal        reduce using rule 35 (Expr)
+    _notequal        [reduce using rule 59 (Lvalue)]
+    _and             reduce using rule 35 (Expr)
+    _and             [reduce using rule 59 (Lvalue)]
+    _or              reduce using rule 35 (Expr)
+    _or              [reduce using rule 59 (Lvalue)]
+    _assignop        reduce using rule 35 (Expr)
+    _assignop        [reduce using rule 59 (Lvalue)]
+    _semicolon       reduce using rule 35 (Expr)
+    _semicolon       [reduce using rule 59 (Lvalue)]
+    _period          reduce using rule 35 (Expr)
+    _period          [reduce using rule 59 (Lvalue)]
+    _rightparen      reduce using rule 35 (Expr)
+    _rightparen      [reduce using rule 59 (Lvalue)]
+    _leftbracket     reduce using rule 35 (Expr)
+    _leftbracket     [reduce using rule 59 (Lvalue)]
+    _rightbracket    reduce using rule 35 (Expr)
+    _rightbracket    [reduce using rule 59 (Lvalue)]
+    _greaterequal    reduce using rule 35 (Expr)
+    _greaterequal    [reduce using rule 59 (Lvalue)]
+    $default         reduce using rule 35 (Expr)
 
 
 State 119
 
-   59 Lvalue: Lvalue _period _id .
+   58 Lvalue: Lvalue _period _id .
 
-    $default  reduce using rule 59 (Lvalue)
+    $default  reduce using rule 58 (Lvalue)
 
 
 State 120
 
-   40 Expr: Expr . _plus Expr
-   41     | Expr . _minus Expr
-   42     | Expr . _multiplication Expr
-   43     | Expr . _division Expr
-   44     | Expr . _mod Expr
-   46     | Expr . _less Expr
-   47     | Expr . _lessequal Expr
-   48     | Expr . _greater Expr
-   49     | Expr . _greaterequal Expr
-   50     | Expr . _equal Expr
-   51     | Expr . _notequal Expr
-   52     | Expr . _and Expr
-   53     | Expr . _or Expr
-   58 Lvalue: Lvalue _leftbracket Expr . _rightbracket
+   39 Expr: Expr . _plus Expr
+   40     | Expr . _minus Expr
+   41     | Expr . _multiplication Expr
+   42     | Expr . _division Expr
+   43     | Expr . _mod Expr
+   45     | Expr . _less Expr
+   46     | Expr . _lessequal Expr
+   47     | Expr . _greater Expr
+   48     | Expr . _greaterequal Expr
+   49     | Expr . _equal Expr
+   50     | Expr . _notequal Expr
+   51     | Expr . _and Expr
+   52     | Expr . _or Expr
+   57 Lvalue: Lvalue _leftbracket Expr . _rightbracket
 
     _plus            shift, and go to state 81
     _minus           shift, and go to state 82
@@ -1951,7 +1948,7 @@ State 120
 
 State 121
 
-   56 Expr: _newarray _leftparen _intconstant _comma . Type _rightparen
+   55 Expr: _newarray _leftparen _intconstant _comma . Type _rightparen
 
     _boolean  shift, and go to state 1
     _double   shift, and go to state 3
@@ -1964,7 +1961,7 @@ State 121
 
 State 122
 
-   62 Call: _id _period _id _leftparen . Actuals _rightparen
+   61 Call: _id _period _id _leftparen . Actuals _rightparen
 
     _newarray         shift, and go to state 59
     _readln           shift, and go to state 60
@@ -1985,22 +1982,22 @@ State 122
 
 State 123
 
-   61 Call: _id _leftparen Actuals _rightparen .
+   60 Call: _id _leftparen Actuals _rightparen .
 
-    $default  reduce using rule 61 (Call)
+    $default  reduce using rule 60 (Call)
 
 
 State 124
 
-   58 Lvalue: Lvalue _leftbracket Expr _rightbracket .
+   57 Lvalue: Lvalue _leftbracket Expr _rightbracket .
 
-    $default  reduce using rule 58 (Lvalue)
+    $default  reduce using rule 57 (Lvalue)
 
 
 State 125
 
    13 Type: Type . _leftbracket _rightbracket
-   56 Expr: _newarray _leftparen _intconstant _comma Type . _rightparen
+   55 Expr: _newarray _leftparen _intconstant _comma Type . _rightparen
 
     _rightparen   shift, and go to state 127
     _leftbracket  shift, and go to state 20
@@ -2008,20 +2005,20 @@ State 125
 
 State 126
 
-   62 Call: _id _period _id _leftparen Actuals . _rightparen
+   61 Call: _id _period _id _leftparen Actuals . _rightparen
 
     _rightparen  shift, and go to state 128
 
 
 State 127
 
-   56 Expr: _newarray _leftparen _intconstant _comma Type _rightparen .
+   55 Expr: _newarray _leftparen _intconstant _comma Type _rightparen .
 
-    $default  reduce using rule 56 (Expr)
+    $default  reduce using rule 55 (Expr)
 
 
 State 128
 
-   62 Call: _id _period _id _leftparen Actuals _rightparen .
+   61 Call: _id _period _id _leftparen Actuals _rightparen .
 
-    $default  reduce using rule 62 (Call)
+    $default  reduce using rule 61 (Call)

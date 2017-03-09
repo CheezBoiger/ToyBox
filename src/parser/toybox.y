@@ -86,17 +86,17 @@ Decl
  */
 Decl:
 /* NULL */
-| VariableDecl 
-| ClassDecl 
-| InterfaceDecl
-| FunctionDecl 
+| VariableDecl { printf("[reduce 1]\n"); }
+| ClassDecl    { printf("[reduce 1]\n"); }
+| InterfaceDecl{ printf("[reduce 1]\n"); }
+| FunctionDecl { printf("[reduce 1]\n"); }
 ;
 
 /*
   Item 2
  */
 VariableDecl:
-Variable _semicolon
+Variable _semicolon{ printf("[reduce 2]\n"); }
 ;
 
 /*
@@ -106,33 +106,33 @@ Variable _semicolon
   add in a null alternative. Will cause conflicts though...
  */
 Variable:
-Type _id 
+Type _id { printf("[reduce 3]\n"); }
 ;
 
 /*
   Item 4
  */
 Type:
-  _double { printf("[reduce item 4]\n"); }
-| _int { printf("[reduce item 4]\n"); }
-| _boolean { printf("[reduce item 4]\n"); }
-| _string { printf("[reduce item 4]\n"); }
-| Type _leftbracket _rightbracket { printf("[reduce item 4]\n"); }
-| _id { printf("[reduce item 4]\n"); }
+  _double { printf("[reduce 4]\n"); }
+| _int { printf("[reduce 4]\n"); }
+| _boolean { printf("[reduce  4]\n"); }
+| _string { printf("[reduce 4]\n"); }
+| Type _leftbracket _rightbracket { printf("[reduce 4]\n"); }
+| _id { printf("[reduce 4]\n"); }
 ;
 
 /*
   Item 5
  */
 ClassDecl:
-_class _id ExtendClass ImplementClass _leftbrace Field _rightbrace Decl 
+_class _id ExtendClass ImplementClass _leftbrace Field _rightbrace Decl { printf("[reduce 5]\n"); }
 ;
 
 /*
   Item 6
  */
 ExtendClass:
-_extends _id { printf("[reduce]"); }
+_extends _id { printf("[reduce 6]\n"); }
 |
 ;
 
@@ -140,7 +140,7 @@ _extends _id { printf("[reduce]"); }
   Item 7
  */
 ImplementClass:
-_implements ImplInterface
+_implements ImplInterface { printf("[reduce 7]\n"); }
 |
 ;
 
@@ -149,21 +149,21 @@ _implements ImplInterface
  */
 ImplInterface:
 _id
-| _id _comma ImplInterface
+| _id _comma ImplInterface { printf("[reduce 8]\n"); }
 ;
 
 /*
   Item 9
  */
 InterfaceDecl:
-_interface _id _leftbrace Prototype _rightbrace Decl 
+_interface _id _leftbrace Prototype _rightbrace Decl { printf("[reduce 9]\n"); }
 ;
 
 /*
   Item 10
  */
 Prototype:
-Type _id _leftparen Formals _rightparen _semicolon Prototype
+Type _id _leftparen Formals _rightparen _semicolon Prototype { printf("[reduce 10]\n"); }
 |
 ;
 
@@ -172,7 +172,7 @@ Type _id _leftparen Formals _rightparen _semicolon Prototype
  */
 Formals:
 Variable
-| Variable _comma Formals
+| Variable _comma Formals { printf("[reduce 11]\n"); }
 |
 ;
 
@@ -180,22 +180,21 @@ Variable
   Item 12
  */
 Field:
-VariableDecl
-|
+VariableDecl { printf("[reduce 12]\n"); }
 ;
 
 /*
   Item 13
  */
 FunctionDecl:
-Type _id _leftparen Formals _rightparen StmtBlock Decl
-;
+Type _id _leftparen Formals _rightparen StmtBlock Decl { printf("[reduce 13]\n"); }
+; 
 
 /*
   Item 14
  */
 StmtBlock:
-_leftparen StmtDeclares Stmt _rightparen
+_leftparen StmtDeclares Stmt _rightparen { printf("[reduce 14]\n"); }
 ;
 
 
