@@ -87,16 +87,16 @@ Decl
 Decl:
 /* NULL */
 | VariableDecl { printf("[reduce 1]\n"); }
-| ClassDecl    { printf("[reduce 1]\n"); }
-| InterfaceDecl{ printf("[reduce 1]\n"); }
-| FunctionDecl { printf("[reduce 1]\n"); }
+| ClassDecl    { printf("[reduce 2]\n"); }
+| InterfaceDecl{ printf("[reduce 3]\n"); }
+| FunctionDecl { printf("[reduce 4]\n"); }
 ;
 
 /*
   Item 2
  */
 VariableDecl:
-Variable _semicolon{ printf("[reduce 2]\n"); }
+Variable _semicolon{ printf("[reduce 5]\n"); }
 ;
 
 /*
@@ -106,33 +106,33 @@ Variable _semicolon{ printf("[reduce 2]\n"); }
   add in a null alternative. Will cause conflicts though...
  */
 Variable:
-Type _id { printf("[reduce 3]\n"); }
+Type _id { printf("[reduce 6]\n"); }
 ;
 
 /*
   Item 4
  */
 Type:
-  _double { printf("[reduce 4]\n"); }
-| _int { printf("[reduce 4]\n"); }
-| _boolean { printf("[reduce  4]\n"); }
-| _string { printf("[reduce 4]\n"); }
-| Type _leftbracket _rightbracket { printf("[reduce 4]\n"); }
-| _id { printf("[reduce 4]\n"); }
+  _double { printf("[reduce 7]\n"); }
+| _int { printf("[reduce 8\n"); }
+| _boolean { printf("[reduce  9]\n"); }
+| _string { printf("[reduce 10]\n"); }
+| Type _leftbracket _rightbracket { printf("[reduce 11]\n"); }
+| _id { printf("[reduce 12]\n"); }
 ;
 
 /*
   Item 5
  */
 ClassDecl:
-_class _id ExtendClass ImplementClass _leftbrace Field _rightbrace Decl { printf("[reduce 5]\n"); }
+_class _id ExtendClass ImplementClass _leftbrace Field _rightbrace Decl { printf("[reduce 13]\n"); }
 ;
 
 /*
   Item 6
  */
 ExtendClass:
-_extends _id { printf("[reduce 6]\n"); }
+_extends _id { printf("[reduce 14]\n"); }
 |
 ;
 
@@ -140,7 +140,7 @@ _extends _id { printf("[reduce 6]\n"); }
   Item 7
  */
 ImplementClass:
-_implements ImplInterface { printf("[reduce 7]\n"); }
+_implements ImplInterface { printf("[reduce 15]\n"); }
 |
 ;
 
@@ -149,21 +149,21 @@ _implements ImplInterface { printf("[reduce 7]\n"); }
  */
 ImplInterface:
 _id
-| _id _comma ImplInterface { printf("[reduce 8]\n"); }
+| _id _comma ImplInterface { printf("[reduce 16]\n"); }
 ;
 
 /*
   Item 9
  */
 InterfaceDecl:
-_interface _id _leftbrace Prototype _rightbrace Decl { printf("[reduce 9]\n"); }
+_interface _id _leftbrace Prototype _rightbrace Decl { printf("[reduce 17]\n"); }
 ;
 
 /*
   Item 10
  */
 Prototype:
-Type _id _leftparen Formals _rightparen _semicolon Prototype { printf("[reduce 10]\n"); }
+Type _id _leftparen Formals _rightparen _semicolon Prototype { printf("[reduce 18]\n"); }
 |
 ;
 
@@ -172,7 +172,7 @@ Type _id _leftparen Formals _rightparen _semicolon Prototype { printf("[reduce 1
  */
 Formals:
 Variable
-| Variable _comma Formals { printf("[reduce 11]\n"); }
+| Variable _comma Formals { printf("[reduce 19]\n"); }
 |
 ;
 
@@ -180,21 +180,21 @@ Variable
   Item 12
  */
 Field:
-VariableDecl { printf("[reduce 12]\n"); }
+VariableDecl { printf("[reduce 20]\n"); }
 ;
 
 /*
   Item 13
  */
 FunctionDecl:
-Type _id _leftparen Formals _rightparen StmtBlock Decl { printf("[reduce 13]\n"); }
+Type _id _leftparen Formals _rightparen StmtBlock Decl { printf("[reduce 21]\n"); }
 ; 
 
 /*
   Item 14
  */
 StmtBlock:
-_leftparen StmtDeclares Stmt _rightparen { printf("[reduce 14]\n"); }
+_leftparen StmtDeclares Stmt _rightparen { printf("[reduce 22]\n"); }
 ;
 
 
@@ -202,7 +202,7 @@ _leftparen StmtDeclares Stmt _rightparen { printf("[reduce 14]\n"); }
   Item 15
  */
 StmtDeclares:
-VariableDecl
+VariableDecl { printf("[reduce 23]\n"); }
 |
 ;
 
@@ -211,7 +211,7 @@ VariableDecl
   Item 16
  */
 Stmt:
-Expr _semicolon Stmt
+Expr _semicolon Stmt { printf("[reduce 24]\n"); }
 |
 ;
 
@@ -220,27 +220,27 @@ Expr _semicolon Stmt
   Item 17
  */
 Expr: 
-Lvalue _assignop Expr
-| Constant
-| Lvalue
-| Call
-| Expr _plus Expr
-| Expr _minus Expr
-| Expr _multiplication Expr
-| Expr _division Expr
-| Expr _mod Expr
-| _minus Expr
-| Expr _less Expr
-| Expr _lessequal Expr
-| Expr _greater Expr
-| Expr _greaterequal Expr
-| Expr _equal Expr
-| Expr _notequal Expr
-| Expr _and Expr
-| Expr _or Expr
-| _not Expr
-| _readln _leftparen _rightparen
-| _newarray _leftparen _intconstant _comma Type _rightparen
+Lvalue _assignop Expr       { printf("[reduce 25]\n"); }
+| Constant                  { printf("[reduce 26]\n"); }
+| Lvalue                    { printf("[reduce 27]\n"); }
+| Call                      { printf("[reduce 28]\n"); }
+| Expr _plus Expr           { printf("[reduce 29]\n"); }
+| Expr _minus Expr          { printf("[reduce 30]\n"); }
+| Expr _multiplication Expr { printf("[reduce 31]\n"); }
+| Expr _division Expr       { printf("[reduce 32]\n"); }
+| Expr _mod Expr            { printf("[reduce 33]\n"); }
+| _minus Expr               { printf("[reduce 34]\n"); }
+| Expr _less Expr           { printf("[reduce 35]\n"); }    
+| Expr _lessequal Expr      { printf("[reduce 36]\n"); }
+| Expr _greater Expr        { printf("[reduce 37]\n"); }
+| Expr _greaterequal Expr   { printf("[reduce 38]\n"); }
+| Expr _equal Expr          { printf("[reduce 39]\n"); }
+| Expr _notequal Expr       { printf("[reduce 40]\n"); }
+| Expr _and Expr            { printf("[reduce 41]\n"); }
+| Expr _or Expr             { printf("[reduce 42]\n"); }
+| _not Expr                 { printf("[reduce 43]\n"); }
+| _readln _leftparen _rightparen                            { printf("[reduce 44]\n"); }
+| _newarray _leftparen _intconstant _comma Type _rightparen { printf("[reduce 45]\n"); }
 ;
 
 
@@ -253,28 +253,28 @@ Lvalue _assignop Expr
   are fine, hopefully they don't conflict with you).
  */
 Lvalue:
-_id
-| Lvalue _leftbracket Expr _rightbracket
-| Lvalue _period _id
-| Lvalue _assignop Expr
+_id                                         { printf("[reduce 46]\n"); }
+| Lvalue _leftbracket Expr _rightbracket    { printf("[reduce 47]\n"); }
+| Lvalue _period _id                        { printf("[reduce 48]\n"); }
+| Lvalue _assignop Expr                     { printf("[reduce 49]\n"); }
 ;
 
 Call:
-_id _leftparen Actuals _rightparen
-| _id _period _id _leftparen Actuals _rightparen
+_id _leftparen Actuals _rightparen                  { printf("[reduce 50]\n"); }
+| _id _period _id _leftparen Actuals _rightparen    { printf("[reduce 51]\n"); }
 ;
 
 Actuals:
-Expr
+Expr    { printf("[reduce 52]\n"); }
 ;
 /*
   Item 19
  */
 Constant:
-_intconstant
-| _doubleconstant
-| _stringconstant
-| _booleanconstant
+_intconstant        { printf("[reduce 53]\n"); }
+| _doubleconstant   { printf("[reduce 54]\n"); }
+| _stringconstant   { printf("[reduce 55]\n"); }
+| _booleanconstant  { printf("[reduce 56]\n"); }
 ;
 
 
