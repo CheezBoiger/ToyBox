@@ -114,7 +114,7 @@ Type _id { printf("[reduce 6]\n"); }
  */
 Type:
   _double { printf("[reduce 7]\n"); }
-| _int { printf("[reduce 8\n"); }
+| _int { printf("[reduce 8]\n"); }
 | _boolean { printf("[reduce  9]\n"); }
 | _string { printf("[reduce 10]\n"); }
 | Type _leftbracket _rightbracket { printf("[reduce 11]\n"); }
@@ -194,7 +194,7 @@ Type _id _leftparen Formals _rightparen StmtBlock Decl { printf("[reduce 21]\n")
   Item 14
  */
 StmtBlock:
-_leftparen StmtDeclares Stmt _rightparen { printf("[reduce 22]\n"); }
+_leftbrace StmtDeclares Stmt _rightbrace { printf("[reduce 22]\n"); }
 ;
 
 
@@ -202,8 +202,8 @@ _leftparen StmtDeclares Stmt _rightparen { printf("[reduce 22]\n"); }
   Item 15
  */
 StmtDeclares:
-VariableDecl { printf("[reduce 23]\n"); }
 |
+VariableDecl { printf("[reduce 23]\n"); }
 ;
 
 
@@ -212,6 +212,13 @@ VariableDecl { printf("[reduce 23]\n"); }
  */
 Stmt:
 Expr _semicolon Stmt { printf("[reduce 24]\n"); }
+| IfStmt
+| WhileStmt
+| ForStmt
+| BreakStmt
+| ReturnStmt
+| PrintStmt
+| StmtBlock
 |
 ;
 
@@ -275,6 +282,34 @@ _intconstant        { printf("[reduce 53]\n"); }
 | _doubleconstant   { printf("[reduce 54]\n"); }
 | _stringconstant   { printf("[reduce 55]\n"); }
 | _booleanconstant  { printf("[reduce 56]\n"); }
+;
+
+
+/*
+Item 20
+*/
+IfStmt:
+_if _leftparen Expr _rightparen Stmt
+;//needs else
+
+WhileStmt:
+_while _leftparen Expr _rightparen Stmt
+;
+
+ForStmt:
+_for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stmt
+;
+BreakStmt:
+_break _semicolon
+;
+
+ReturnStmt:
+_return Expr _semicolon
+| _return _semicolon
+;
+
+PrintStmt:
+_println Expr
 ;
 
 
