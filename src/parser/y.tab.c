@@ -258,16 +258,16 @@ static const unsigned char yytranslate[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const unsigned short int yyrline[] =
 {
-       0,    87,    87,    94,    96,    97,    98,    99,   106,   116,
-     117,   122,   123,   130,   131,   132,   133,   134,   135,   142,
-     149,   150,   157,   158,   165,   166,   173,   180,   181,   182,
-     189,   190,   191,   198,   199,   200,   207,   208,   215,   223,
-     224,   232,   233,   234,   235,   236,   237,   238,   239,   240,
-     248,   249,   250,   251,   252,   253,   254,   255,   256,   257,
-     258,   259,   260,   261,   262,   263,   264,   265,   266,   267,
-     268,   269,   282,   287,   288,   289,   294,   295,   300,   306,
-     307,   308,   309,   316,   317,   321,   325,   330,   331,   336,
-     340,   341,   345,   350,   351
+       0,    87,    87,    94,    96,    97,    98,    99,   106,   113,
+     114,   119,   120,   127,   128,   129,   130,   131,   132,   139,
+     146,   147,   154,   155,   162,   163,   170,   177,   178,   179,
+     186,   187,   188,   195,   196,   197,   204,   205,   212,   220,
+     221,   229,   230,   231,   232,   233,   234,   235,   236,   237,
+     245,   246,   247,   248,   249,   250,   251,   252,   253,   254,
+     255,   256,   257,   258,   259,   260,   261,   262,   263,   264,
+     265,   266,   274,   279,   280,   281,   286,   287,   292,   298,
+     299,   300,   301,   308,   309,   313,   317,   322,   323,   328,
+     332,   333,   337,   342,   343
 };
 #endif
 
@@ -1040,356 +1040,482 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
     *yyvalp = yyvsp[YYFILL (1-yyrhslen)].yystate.yysemantics.yysval;
   switch (yyn)
     {
-        case 4:
+        case 2:
+#line 87 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 0]\n"); }
+#line 1047 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 4:
 #line 96 "toybox.y" /* glr.c:816  */
     { printf("[reduce 1]\n"); }
-#line 1047 "y.tab.c" /* glr.c:816  */
+#line 1053 "y.tab.c" /* glr.c:816  */
     break;
 
   case 5:
 #line 97 "toybox.y" /* glr.c:816  */
     { printf("[reduce 2]\n"); }
-#line 1053 "y.tab.c" /* glr.c:816  */
+#line 1059 "y.tab.c" /* glr.c:816  */
     break;
 
   case 6:
 #line 98 "toybox.y" /* glr.c:816  */
     { printf("[reduce 3]\n"); }
-#line 1059 "y.tab.c" /* glr.c:816  */
+#line 1065 "y.tab.c" /* glr.c:816  */
     break;
 
   case 7:
 #line 99 "toybox.y" /* glr.c:816  */
     { printf("[reduce 4]\n"); }
-#line 1065 "y.tab.c" /* glr.c:816  */
+#line 1071 "y.tab.c" /* glr.c:816  */
     break;
 
   case 8:
 #line 106 "toybox.y" /* glr.c:816  */
     { printf("[reduce 5]\n"); }
-#line 1071 "y.tab.c" /* glr.c:816  */
-    break;
-
-  case 9:
-#line 116 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 6]\n"); }
 #line 1077 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 13:
-#line 130 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 7]\n"); }
+  case 9:
+#line 113 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 6]\n"); }
 #line 1083 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 14:
-#line 131 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 8]\n"); }
+  case 11:
+#line 119 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 7]\n"); }
 #line 1089 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 15:
-#line 132 "toybox.y" /* glr.c:816  */
-    { printf("[reduce  9]\n"); }
+  case 13:
+#line 127 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 8]\n"); }
 #line 1095 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 16:
-#line 133 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 10]\n"); }
+  case 14:
+#line 128 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 9]\n"); }
 #line 1101 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 17:
-#line 134 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 11]\n"); }
+  case 15:
+#line 129 "toybox.y" /* glr.c:816  */
+    { printf("[reduce  10]\n"); }
 #line 1107 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 18:
-#line 135 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 12]\n"); }
+  case 16:
+#line 130 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 11]\n"); }
 #line 1113 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 19:
-#line 142 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 13]\n"); }
+  case 17:
+#line 131 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 12]\n"); }
 #line 1119 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 20:
-#line 149 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 14]\n"); }
+  case 18:
+#line 132 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 13]\n"); }
 #line 1125 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 22:
-#line 157 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 15]\n"); }
+  case 19:
+#line 139 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 14]\n"); }
 #line 1131 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 25:
-#line 166 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 16]\n"); }
+  case 20:
+#line 146 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 15]\n"); }
 #line 1137 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 26:
-#line 173 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 17]\n"); }
+  case 22:
+#line 154 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 16]\n"); }
 #line 1143 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 27:
-#line 180 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 18]\n"); }
+  case 25:
+#line 163 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 17]\n"); }
 #line 1149 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 28:
-#line 181 "toybox.y" /* glr.c:816  */
-    { printf("Wallace is a nerd reduce!\n"); }
+  case 26:
+#line 170 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 18]\n"); }
 #line 1155 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 31:
-#line 190 "toybox.y" /* glr.c:816  */
+  case 27:
+#line 177 "toybox.y" /* glr.c:816  */
     { printf("[reduce 19]\n"); }
 #line 1161 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 33:
-#line 198 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 20]\n"); }
+  case 28:
+#line 178 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 20]\n\n"); }
 #line 1167 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 36:
-#line 207 "toybox.y" /* glr.c:816  */
+  case 30:
+#line 186 "toybox.y" /* glr.c:816  */
     { printf("[reduce 21]\n"); }
 #line 1173 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 37:
-#line 208 "toybox.y" /* glr.c:816  */
-    { printf("[reduce void]\n"); }
+  case 31:
+#line 187 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 22]\n"); }
 #line 1179 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 38:
-#line 215 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 22]\n"); }
+  case 33:
+#line 195 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 23]\n"); }
 #line 1185 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 39:
-#line 223 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 23]\n"); }
+  case 34:
+#line 196 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 24]\n"); }
 #line 1191 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 41:
-#line 232 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 24]\n"); }
+  case 36:
+#line 204 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 25]\n"); }
 #line 1197 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 50:
-#line 248 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 25]\n"); }
+  case 37:
+#line 205 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 26]\n"); }
 #line 1203 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 51:
-#line 249 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 26]\n"); }
+  case 38:
+#line 212 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 27]\n"); }
 #line 1209 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 52:
-#line 250 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 27]\n"); }
+  case 39:
+#line 220 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 28]\n"); }
 #line 1215 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 53:
-#line 251 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 28]\n"); }
+  case 41:
+#line 229 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 29]\n"); }
 #line 1221 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 54:
-#line 252 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 29]\n"); }
+  case 42:
+#line 230 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 30]\n"); }
 #line 1227 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 55:
-#line 253 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 30]\n"); }
+  case 43:
+#line 231 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 31]\n"); }
 #line 1233 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 56:
-#line 254 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 31]\n"); }
+  case 44:
+#line 232 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 32]\n"); }
 #line 1239 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 57:
-#line 255 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 32]\n"); }
+  case 45:
+#line 233 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 33]\n"); }
 #line 1245 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 58:
-#line 256 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 33]\n"); }
+  case 46:
+#line 234 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 34]\n"); }
 #line 1251 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 59:
-#line 257 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 34]\n"); }
+  case 47:
+#line 235 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 35]\n"); }
 #line 1257 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 60:
-#line 258 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 35]\n"); }
+  case 48:
+#line 236 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 36]\n"); }
 #line 1263 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 61:
-#line 259 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 36]\n"); }
+  case 50:
+#line 245 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 37]\n"); }
 #line 1269 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 62:
-#line 260 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 37]\n"); }
+  case 51:
+#line 246 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 38]\n"); }
 #line 1275 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 63:
-#line 261 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 38]\n"); }
+  case 52:
+#line 247 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 39]\n"); }
 #line 1281 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 64:
-#line 262 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 39]\n"); }
+  case 53:
+#line 248 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 40]\n"); }
 #line 1287 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 65:
-#line 263 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 40]\n"); }
+  case 54:
+#line 249 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 41]\n"); }
 #line 1293 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 66:
-#line 264 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 41]\n"); }
+  case 55:
+#line 250 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 42]\n"); }
 #line 1299 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 67:
-#line 265 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 42]\n"); }
+  case 56:
+#line 251 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 43]\n"); }
 #line 1305 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 68:
-#line 266 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 43]\n"); }
+  case 57:
+#line 252 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 44]\n"); }
 #line 1311 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 69:
-#line 267 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 44\n"); }
+  case 58:
+#line 253 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 45]\n"); }
 #line 1317 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 70:
-#line 268 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 44]\n"); }
+  case 59:
+#line 254 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 46]\n"); }
 #line 1323 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 71:
-#line 269 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 45]\n"); }
+  case 60:
+#line 255 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 47]\n"); }
 #line 1329 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 72:
-#line 282 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 46]\n"); }
+  case 61:
+#line 256 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 48]\n"); }
 #line 1335 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 73:
-#line 287 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 47]\n"); }
+  case 62:
+#line 257 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 49]\n"); }
 #line 1341 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 74:
-#line 288 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 48]\n"); }
+  case 63:
+#line 258 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 50]\n"); }
 #line 1347 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 76:
-#line 294 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 50]\n"); }
+  case 64:
+#line 259 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 51]\n"); }
 #line 1353 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 77:
-#line 295 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 51]\n"); }
+  case 65:
+#line 260 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 52]\n"); }
 #line 1359 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 78:
-#line 300 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 52]\n"); }
+  case 66:
+#line 261 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 53]\n"); }
 #line 1365 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 79:
-#line 306 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 53]\n"); }
+  case 67:
+#line 262 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 54]\n"); }
 #line 1371 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 80:
-#line 307 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 54]\n"); }
+  case 68:
+#line 263 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 55]\n"); }
 #line 1377 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 81:
-#line 308 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 55]\n"); }
+  case 69:
+#line 264 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 56\n"); }
 #line 1383 "y.tab.c" /* glr.c:816  */
     break;
 
-  case 82:
-#line 309 "toybox.y" /* glr.c:816  */
-    { printf("[reduce 56]\n"); }
+  case 70:
+#line 265 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 57]\n"); }
 #line 1389 "y.tab.c" /* glr.c:816  */
     break;
 
+  case 71:
+#line 266 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 58]\n"); }
+#line 1395 "y.tab.c" /* glr.c:816  */
+    break;
 
-#line 1393 "y.tab.c" /* glr.c:816  */
+  case 72:
+#line 274 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 59]\n"); }
+#line 1401 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 73:
+#line 279 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 60]\n"); }
+#line 1407 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 74:
+#line 280 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 61]\n"); }
+#line 1413 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 76:
+#line 286 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 62]\n"); }
+#line 1419 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 77:
+#line 287 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 63]\n"); }
+#line 1425 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 78:
+#line 292 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 64]\n"); }
+#line 1431 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 79:
+#line 298 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 65]\n"); }
+#line 1437 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 80:
+#line 299 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 66]\n"); }
+#line 1443 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 81:
+#line 300 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 67]\n"); }
+#line 1449 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 82:
+#line 301 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 68]\n"); }
+#line 1455 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 83:
+#line 308 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 69]\n"); }
+#line 1461 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 84:
+#line 309 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 70]\n"); }
+#line 1467 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 85:
+#line 313 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 71]\n"); }
+#line 1473 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 86:
+#line 317 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 72]\n"); }
+#line 1479 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 87:
+#line 322 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 73]\n"); }
+#line 1485 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 89:
+#line 328 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 74]\n"); }
+#line 1491 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 90:
+#line 332 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 75]\n"); }
+#line 1497 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 91:
+#line 333 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 76]\n"); }
+#line 1503 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 92:
+#line 337 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 77]\n"); }
+#line 1509 "y.tab.c" /* glr.c:816  */
+    break;
+
+  case 93:
+#line 342 "toybox.y" /* glr.c:816  */
+    { printf("[reduce 78]\n"); }
+#line 1515 "y.tab.c" /* glr.c:816  */
+    break;
+
+
+#line 1519 "y.tab.c" /* glr.c:816  */
       default: break;
     }
 
@@ -2839,6 +2965,7 @@ yyparse (void)
               if (yyisShiftAction (yyaction))
                 {
                   YY_SYMBOL_PRINT ("Shifting", yytoken, &yylval, &yylloc);
+                  printf("Shifting token %d\n", yytoken);
                   yychar = YYEMPTY;
                   yyposn += 1;
                   yyglrShift (&yystack, 0, yyaction, yyposn, &yylval);
@@ -3071,21 +3198,7 @@ yypdumpstack (yyGLRStack* yystackp)
 
 
 
-#line 354 "toybox.y" /* glr.c:2584  */
-
-
-
-
-
-//some thing                printf("reduce 28");
-//y.tab.c add print shift statement
-//will get overwritten use make file 
-//sed "s/\/\* Shift the lookahead token. \*\//\/\/
-// sed command can add code at those locations
-
-//bison compiler option -v will show conflicts
-
-
+#line 346 "toybox.y" /* glr.c:2584  */
 
 
 void yyerror (char *s){fprintf (stderr, "%s\n", s);}
