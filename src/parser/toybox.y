@@ -86,17 +86,17 @@ Decl
  */
 Decl:
 /* NULL */
-| VariableDecl { printf("[shift 2]\n"); }
-| ClassDecl { printf("[shift 4]\n"); }
-| InterfaceDecl { printf("[shift 9]\n"); }
-| FunctionDecl { printf("[shift 13]\n"); }
+| VariableDecl 
+| ClassDecl 
+| InterfaceDecl
+| FunctionDecl 
 ;
 
 /*
   Item 2
  */
 VariableDecl:
-Variable _semicolon Decl { printf("[shift]\n"); }
+Variable _semicolon
 ;
 
 /*
@@ -106,26 +106,26 @@ Variable _semicolon Decl { printf("[shift]\n"); }
   add in a null alternative. Will cause conflicts though...
  */
 Variable:
-Type _id { printf("[shift Variable]\n"); }
+Type _id 
 ;
 
 /*
   Item 4
  */
 Type:
-  _double { printf("[reduce]\n"); }
-| _int { printf("[reduce]\n"); }
-| _boolean { printf("[reduce]\n"); }
-| _string { printf("[reduce]\n"); }
-| Type _leftbracket _rightbracket { printf("[reduce]\n"); }
-| _id { printf("[reduce]\n"); }
+  _double { printf("[reduce item 4]\n"); }
+| _int { printf("[reduce item 4]\n"); }
+| _boolean { printf("[reduce item 4]\n"); }
+| _string { printf("[reduce item 4]\n"); }
+| Type _leftbracket _rightbracket { printf("[reduce item 4]\n"); }
+| _id { printf("[reduce item 4]\n"); }
 ;
 
 /*
   Item 5
  */
 ClassDecl:
-_class _id ExtendClass ImplementClass _leftbrace Field _rightbrace Decl { printf("[shift]\n"); }
+_class _id ExtendClass ImplementClass _leftbrace Field _rightbrace Decl 
 ;
 
 /*
@@ -156,7 +156,7 @@ _id
   Item 9
  */
 InterfaceDecl:
-_interface _id _leftbrace Prototype _rightbrace Decl { printf("[shift]"); }
+_interface _id _leftbrace Prototype _rightbrace Decl 
 ;
 
 /*
@@ -220,9 +220,11 @@ Expr _semicolon Stmt
 /*
   Item 17
  */
-Expr:
-Constant
+Expr: 
+Lvalue _assignop Expr
+| Constant
 | Lvalue
+| Call
 | Expr _plus Expr
 | Expr _minus Expr
 | Expr _multiplication Expr
@@ -258,7 +260,14 @@ _id
 | Lvalue _assignop Expr
 ;
 
+Call:
+_id _leftparen Actuals _rightparen
+| _id _period _id _leftparen Actuals _rightparen
+;
 
+Actuals:
+Expr
+;
 /*
   Item 19
  */
