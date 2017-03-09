@@ -95,7 +95,8 @@ extern int yydebug;
     _booleanconstant = 305,
     _id = 306,
     _epsilon = 307,
-    _greaterequal = 308
+    _greaterequal = 308,
+    _ifx = 309
   };
 #endif
 

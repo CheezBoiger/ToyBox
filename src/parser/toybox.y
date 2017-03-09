@@ -75,6 +75,10 @@ void yyerror (char *s);
 %left _assignop
 
 
+ %nonassoc _else
+ %nonassoc _ifx
+
+
 %glr-parser
  /* CFG here */
 %%
@@ -109,7 +113,14 @@ Variable _semicolon { printf("[reduce 5]\n"); }
   add in a null alternative. Will cause conflicts though...
  */
 Variable:
-Type _id { printf("[reduce 6]\n"); }
+Type _id Assign { printf("[reduce 6]\n"); }
+| _id Assign
+;
+
+
+Assign:
+_assignop Constant
+|
 ;
 
 /*
@@ -167,6 +178,7 @@ _interface _id _leftbrace Prototype _rightbrace { printf("[reduce 17]\n"); }
  */
 Prototype:
 Type _id _leftparen Formals _rightparen _semicolon Prototype { printf("[reduce 18]\n"); }
+| _void _id _leftparen Formals _rightparen _semicolon Prototype { printf("Wallace is a nerd reduce!\n"); }
 |
 ;
 
@@ -183,8 +195,9 @@ Variable
   Item 12
  */
 Field:
-VariableDecl { printf("[reduce 20]\n"); }
-|
+VariableDecl Field { printf("[reduce 20]\n"); }
+| FunctionDecl Field
+|  
 ;
 
 /*
@@ -192,6 +205,7 @@ VariableDecl { printf("[reduce 20]\n"); }
  */
 FunctionDecl:
 Type _id _leftparen Formals _rightparen StmtBlock { printf("[reduce 21]\n"); }
+| _void _id _leftparen Formals _rightparen StmtBlock { printf("[reduce void]\n"); }
 ; 
 
 /*
@@ -206,7 +220,7 @@ _leftbrace StmtDeclares Stmt _rightbrace { printf("[reduce 22]\n"); }
   Item 15
  */
 StmtDeclares:
-VariableDecl { printf("[reduce 23]\n"); }
+VariableDecl StmtDeclares { printf("[reduce 23]\n"); }
 |
 ;
 
@@ -218,11 +232,11 @@ Stmt:
 Expr _semicolon Stmt { printf("[reduce 24]\n"); }
 | IfStmt
 | WhileStmt
-| ForStmt
-| BreakStmt
-| ReturnStmt
-| PrintStmt
-| StmtBlock
+| ForStmt Stmt
+| BreakStmt Stmt
+| ReturnStmt Stmt
+| PrintStmt Stmt
+| StmtBlock Stmt
 |
 ;
 
@@ -250,6 +264,7 @@ Lvalue _assignop Expr       { printf("[reduce 25]\n"); }
 | Expr _and Expr            { printf("[reduce 41]\n"); }
 | Expr _or Expr             { printf("[reduce 42]\n"); }
 | _not Expr                 { printf("[reduce 43]\n"); }
+| _leftparen Expr _rightparen                               { printf("[reduce 44\n"); }
 | _readln _leftparen _rightparen                            { printf("[reduce 44]\n"); }
 | _newarray _leftparen _intconstant _comma Type _rightparen { printf("[reduce 45]\n"); }
 ;
@@ -294,12 +309,12 @@ _intconstant        { printf("[reduce 53]\n"); }
 | _booleanconstant  { printf("[reduce 56]\n"); }
 ;
 
-
 /*
 Item 20
 */
 IfStmt:
-_if _leftparen Expr _rightparen Stmt
+_if _leftparen Expr _rightparen Stmt 
+| _if _leftparen Expr _rightparen Stmt _else Stmt
 ;//needs else
 
 WhileStmt:
@@ -307,8 +322,16 @@ _while _leftparen Expr _rightparen Stmt
 ;
 
 ForStmt:
-_for _leftparen Expr _semicolon Expr _semicolon Expr _rightparen Stmt
+_for _leftparen ForOption _semicolon Expr _semicolon ForOption _rightparen
 ;
+
+
+ForOption:
+Expr
+|
+;
+
+
 BreakStmt:
 _break _semicolon
 ;
@@ -319,9 +342,14 @@ _return Expr _semicolon
 ;
 
 PrintStmt:
-_println Expr
+_println _leftparen Expr PrintOption  _rightparen _semicolon
 ;
 
+
+PrintOption:
+_comma Expr PrintOption
+|
+;
 
 %%
 

@@ -17,7 +17,6 @@ Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 "class"        return _class;
 "double"       return _double;
 "else"         return _else;
-"false"        return _false;
 "for"          return _for;
 "if"           return _if;
 "implements"   return _implements;
@@ -28,7 +27,6 @@ Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 "readln"       return _readln;
 "return"       return _return;
 "string"       return _string;
-"true"         return _true;
 "void"         return _void;
 "while"        return _while;
 "extends"      return _extends;
@@ -59,7 +57,7 @@ Copyright (c) Mario Garcia, Under the GNU Public v2 License.
 "}"            return _rightbrace;
 
 
-
+"true"|"false"                                 return _booleanconstant;
 \".*\"                                           return _stringconstant;
 0[x|X][a-fA-F0-9]+|[0-9]+                        return _intconstant;
 [0-9][0-9]*"."[0-9]*|[0-9][0-9]*"."[0-9]*[e|E][-|+]*[0-9]+ return _doubleconstant;
