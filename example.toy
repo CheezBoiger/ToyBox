@@ -31,9 +31,13 @@ void main() {
   double id = 11.0e11; // dunno
   string joker = "I like cats";
   Cat cat;
-  
   println(cat.SaySomething(12));
   
+  if (test < 11) {
+    cat.speed = 0.16;
+  } else else {
+    return 1.0;
+  }
   return 0;
   
 }
