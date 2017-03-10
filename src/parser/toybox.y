@@ -75,8 +75,8 @@ void yyerror (char *s);
 %left _assignop
 
 
- %nonassoc _else
  %nonassoc _ifx
+ %nonassoc _else
 
 
 %glr-parser
@@ -289,57 +289,64 @@ _id _leftparen Actuals _rightparen                  { printf("[reduce 62]\n"); }
 
 
 Actuals:
-Expr    { printf("[reduce 64]\n"); }
+Expr ActualHelper    { printf("[reduce 64]\n"); }
 ;
+
+
+ActualHelper:
+_comma Expr ActualHelper { printf("[reduce 65]\n"); }
+|
+;
+
 /*
   Item 19
  */
 Constant:
-_intconstant        { printf("[reduce 65]\n"); }
-| _doubleconstant   { printf("[reduce 66]\n"); }
-| _stringconstant   { printf("[reduce 67]\n"); }
-| _booleanconstant  { printf("[reduce 68]\n"); }
+_intconstant        { printf("[reduce 66]\n"); }
+| _doubleconstant   { printf("[reduce 67]\n"); }
+| _stringconstant   { printf("[reduce 68]\n"); }
+| _booleanconstant  { printf("[reduce 69]\n"); }
 ;
 
 /*
 Item 20
 */
 IfStmt:
-_if _leftparen Expr _rightparen Stmt                { printf("[reduce 69]\n"); }
-| _if _leftparen Expr _rightparen Stmt _else Stmt   { printf("[reduce 70]\n"); }
+_if _leftparen Expr _rightparen Stmt %prec _ifx     { printf("[reduce 70]\n"); }
+| _if _leftparen Expr _rightparen Stmt _else Stmt   { printf("[reduce 71]\n"); }
 ;
 
 WhileStmt:
-_while _leftparen Expr _rightparen Stmt             { printf("[reduce 71]\n"); }
+_while _leftparen Expr _rightparen Stmt             { printf("[reduce 72]\n"); }
 ;
 
 ForStmt:
-_for _leftparen ForOption _semicolon Expr _semicolon ForOption _rightparen  { printf("[reduce 72]\n"); }
+_for _leftparen ForOption _semicolon Expr _semicolon ForOption _rightparen  { printf("[reduce 73]\n"); }
 ;
 
 
 ForOption:
-Expr    { printf("[reduce 73]\n"); }
+Expr    { printf("[reduce 74]\n"); }
 |
 ;
 
 
 BreakStmt:
-_break _semicolon   { printf("[reduce 74]\n"); }
+_break _semicolon   { printf("[reduce 75]\n"); }
 ;
 
 ReturnStmt:
-_return Expr _semicolon { printf("[reduce 75]\n"); }
-| _return _semicolon    { printf("[reduce 76]\n"); }
+_return Expr _semicolon { printf("[reduce 76]\n"); }
+| _return _semicolon    { printf("[reduce 77]\n"); }
 ;
 
 PrintStmt:
-_println _leftparen Expr PrintOption  _rightparen _semicolon    { printf("[reduce 77]\n"); }
+_println _leftparen Expr PrintOption  _rightparen _semicolon    { printf("[reduce 78]\n"); }
 ;
 
 
 PrintOption:
-_comma Expr PrintOption { printf("[reduce 78]\n"); }
+_comma Expr PrintOption { printf("[reduce 79]\n"); }
 |
 ;
 

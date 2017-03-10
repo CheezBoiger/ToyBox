@@ -4,12 +4,10 @@ Terminals unused in grammar
    _true
    _greatereequal
    _epsilon
-   _ifx
 
 
 State 70 conflicts: 1 shift/reduce
 State 79 conflicts: 1 shift/reduce
-State 189 conflicts: 1 shift/reduce
 
 
 Grammar
@@ -114,32 +112,35 @@ Grammar
    75 Call: _id _leftparen Actuals _rightparen
    76     | _id _period _id _leftparen Actuals _rightparen
 
-   77 Actuals: Expr
+   77 Actuals: Expr ActualHelper
 
-   78 Constant: _intconstant
-   79         | _doubleconstant
-   80         | _stringconstant
-   81         | _booleanconstant
+   78 ActualHelper: _comma Expr ActualHelper
+   79             | %empty
 
-   82 IfStmt: _if _leftparen Expr _rightparen Stmt
-   83       | _if _leftparen Expr _rightparen Stmt _else Stmt
+   80 Constant: _intconstant
+   81         | _doubleconstant
+   82         | _stringconstant
+   83         | _booleanconstant
 
-   84 WhileStmt: _while _leftparen Expr _rightparen Stmt
+   84 IfStmt: _if _leftparen Expr _rightparen Stmt
+   85       | _if _leftparen Expr _rightparen Stmt _else Stmt
 
-   85 ForStmt: _for _leftparen ForOption _semicolon Expr _semicolon ForOption _rightparen
+   86 WhileStmt: _while _leftparen Expr _rightparen Stmt
 
-   86 ForOption: Expr
-   87          | %empty
+   87 ForStmt: _for _leftparen ForOption _semicolon Expr _semicolon ForOption _rightparen
 
-   88 BreakStmt: _break _semicolon
+   88 ForOption: Expr
+   89          | %empty
 
-   89 ReturnStmt: _return Expr _semicolon
-   90           | _return _semicolon
+   90 BreakStmt: _break _semicolon
 
-   91 PrintStmt: _println _leftparen Expr PrintOption _rightparen _semicolon
+   91 ReturnStmt: _return Expr _semicolon
+   92           | _return _semicolon
 
-   92 PrintOption: _comma Expr PrintOption
-   93            | %empty
+   93 PrintStmt: _println _leftparen Expr PrintOption _rightparen _semicolon
+
+   94 PrintOption: _comma Expr PrintOption
+   95            | %empty
 
 
 Terminals, with rules where they appear
@@ -147,25 +148,25 @@ Terminals, with rules where they appear
 $end (0) 0
 error (256)
 _boolean (258) 14
-_break (259) 88
+_break (259) 90
 _class (260) 18
 _double (261) 12
-_else (262) 83
+_else (262) 85
 _extends (263) 19
 _false (264)
-_for (265) 85
-_if (266) 82 83
+_for (265) 87
+_if (266) 84 85
 _implements (267) 21
 _int (268) 13
 _interface (269) 25
 _newarray (270) 70
-_println (271) 91
+_println (271) 93
 _readln (272) 69
-_return (273) 89 90
+_return (273) 91 92
 _string (274) 15
 _true (275)
 _void (276) 27 36
-_while (277) 84
+_while (277) 86
 _plus (278) 53
 _minus (279) 54 58
 _multiplication (280) 55
@@ -181,19 +182,19 @@ _and (289) 65
 _or (290) 66
 _not (291) 67
 _assignop (292) 10 49
-_semicolon (293) 7 26 27 40 85 88 89 90 91
-_comma (294) 24 30 70 92
+_semicolon (293) 7 26 27 40 87 90 91 92 93
+_comma (294) 24 30 70 78 94
 _period (295) 73 76
-_leftparen (296) 26 27 35 36 68 69 70 75 76 82 83 84 85 91
-_rightparen (297) 26 27 35 36 68 69 70 75 76 82 83 84 85 91
+_leftparen (296) 26 27 35 36 68 69 70 75 76 84 85 86 87 93
+_rightparen (297) 26 27 35 36 68 69 70 75 76 84 85 86 87 93
 _leftbracket (298) 16 72
 _rightbracket (299) 16 72
 _leftbrace (300) 18 25 37
 _rightbrace (301) 18 25 37
-_intconstant (302) 70 78
-_doubleconstant (303) 79
-_stringconstant (304) 80
-_booleanconstant (305) 81
+_intconstant (302) 70 80
+_doubleconstant (303) 81
+_stringconstant (304) 82
+_booleanconstant (305) 83
 _id (306) 8 9 17 18 19 23 24 25 26 27 35 36 71 73 75 76
 _epsilon (307)
 _greaterequal (308) 62
@@ -240,11 +241,11 @@ StmtDeclares (72)
     on left: 38 39, on right: 37 38
 Stmt (73)
     on left: 40 41 42 43 44 45 46 47 48, on right: 37 40 43 44 45 46
-    47 82 83 84
+    47 84 85 86
 Expr (74)
     on left: 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66
     67 68 69 70, on right: 40 49 53 54 55 56 57 58 59 60 61 62 63 64
-    65 66 67 68 72 77 82 83 84 85 86 89 91 92
+    65 66 67 68 72 77 78 84 85 86 87 88 91 93 94
 Lvalue (75)
     on left: 71, on right: 49 51
 LHelper (76)
@@ -253,24 +254,26 @@ Call (77)
     on left: 75 76, on right: 52
 Actuals (78)
     on left: 77, on right: 75 76
-Constant (79)
-    on left: 78 79 80 81, on right: 10 50
-IfStmt (80)
-    on left: 82 83, on right: 41
-WhileStmt (81)
-    on left: 84, on right: 42
-ForStmt (82)
-    on left: 85, on right: 43
-ForOption (83)
-    on left: 86 87, on right: 85
-BreakStmt (84)
-    on left: 88, on right: 44
-ReturnStmt (85)
-    on left: 89 90, on right: 45
-PrintStmt (86)
-    on left: 91, on right: 46
-PrintOption (87)
-    on left: 92 93, on right: 91 92
+ActualHelper (79)
+    on left: 78 79, on right: 77 78
+Constant (80)
+    on left: 80 81 82 83, on right: 10 50
+IfStmt (81)
+    on left: 84 85, on right: 41
+WhileStmt (82)
+    on left: 86, on right: 42
+ForStmt (83)
+    on left: 87, on right: 43
+ForOption (84)
+    on left: 88 89, on right: 87
+BreakStmt (85)
+    on left: 90, on right: 44
+ReturnStmt (86)
+    on left: 91 92, on right: 45
+PrintStmt (87)
+    on left: 93, on right: 46
+PrintOption (88)
+    on left: 94 95, on right: 93 94
 
 
 State 0
@@ -648,30 +651,30 @@ State 33
 
 State 34
 
-   78 Constant: _intconstant .
-
-    $default  reduce using rule 78 (Constant)
-
-
-State 35
-
-   79 Constant: _doubleconstant .
-
-    $default  reduce using rule 79 (Constant)
-
-
-State 36
-
-   80 Constant: _stringconstant .
+   80 Constant: _intconstant .
 
     $default  reduce using rule 80 (Constant)
 
 
-State 37
+State 35
 
-   81 Constant: _booleanconstant .
+   81 Constant: _doubleconstant .
 
     $default  reduce using rule 81 (Constant)
+
+
+State 36
+
+   82 Constant: _stringconstant .
+
+    $default  reduce using rule 82 (Constant)
+
+
+State 37
+
+   83 Constant: _booleanconstant .
+
+    $default  reduce using rule 83 (Constant)
 
 
 State 38
@@ -1154,22 +1157,22 @@ State 83
 
 State 84
 
-   88 BreakStmt: _break . _semicolon
+   90 BreakStmt: _break . _semicolon
 
     _semicolon  shift, and go to state 110
 
 
 State 85
 
-   85 ForStmt: _for . _leftparen ForOption _semicolon Expr _semicolon ForOption _rightparen
+   87 ForStmt: _for . _leftparen ForOption _semicolon Expr _semicolon ForOption _rightparen
 
     _leftparen  shift, and go to state 111
 
 
 State 86
 
-   82 IfStmt: _if . _leftparen Expr _rightparen Stmt
-   83       | _if . _leftparen Expr _rightparen Stmt _else Stmt
+   84 IfStmt: _if . _leftparen Expr _rightparen Stmt
+   85       | _if . _leftparen Expr _rightparen Stmt _else Stmt
 
     _leftparen  shift, and go to state 112
 
@@ -1183,7 +1186,7 @@ State 87
 
 State 88
 
-   91 PrintStmt: _println . _leftparen Expr PrintOption _rightparen _semicolon
+   93 PrintStmt: _println . _leftparen Expr PrintOption _rightparen _semicolon
 
     _leftparen  shift, and go to state 114
 
@@ -1197,8 +1200,8 @@ State 89
 
 State 90
 
-   89 ReturnStmt: _return . Expr _semicolon
-   90           | _return . _semicolon
+   91 ReturnStmt: _return . Expr _semicolon
+   92           | _return . _semicolon
 
     _newarray         shift, and go to state 87
     _readln           shift, and go to state 89
@@ -1220,7 +1223,7 @@ State 90
 
 State 91
 
-   84 WhileStmt: _while . _leftparen Expr _rightparen Stmt
+   86 WhileStmt: _while . _leftparen Expr _rightparen Stmt
 
     _leftparen  shift, and go to state 118
 
@@ -1607,14 +1610,14 @@ State 109
 
 State 110
 
-   88 BreakStmt: _break _semicolon .
+   90 BreakStmt: _break _semicolon .
 
-    $default  reduce using rule 88 (BreakStmt)
+    $default  reduce using rule 90 (BreakStmt)
 
 
 State 111
 
-   85 ForStmt: _for _leftparen . ForOption _semicolon Expr _semicolon ForOption _rightparen
+   87 ForStmt: _for _leftparen . ForOption _semicolon Expr _semicolon ForOption _rightparen
 
     _newarray         shift, and go to state 87
     _readln           shift, and go to state 89
@@ -1627,7 +1630,7 @@ State 111
     _booleanconstant  shift, and go to state 37
     _id               shift, and go to state 95
 
-    $default  reduce using rule 87 (ForOption)
+    $default  reduce using rule 89 (ForOption)
 
     Expr       go to state 149
     Lvalue     go to state 99
@@ -1638,8 +1641,8 @@ State 111
 
 State 112
 
-   82 IfStmt: _if _leftparen . Expr _rightparen Stmt
-   83       | _if _leftparen . Expr _rightparen Stmt _else Stmt
+   84 IfStmt: _if _leftparen . Expr _rightparen Stmt
+   85       | _if _leftparen . Expr _rightparen Stmt _else Stmt
 
     _newarray         shift, and go to state 87
     _readln           shift, and go to state 89
@@ -1667,7 +1670,7 @@ State 113
 
 State 114
 
-   91 PrintStmt: _println _leftparen . Expr PrintOption _rightparen _semicolon
+   93 PrintStmt: _println _leftparen . Expr PrintOption _rightparen _semicolon
 
     _newarray         shift, and go to state 87
     _readln           shift, and go to state 89
@@ -1695,9 +1698,9 @@ State 115
 
 State 116
 
-   90 ReturnStmt: _return _semicolon .
+   92 ReturnStmt: _return _semicolon .
 
-    $default  reduce using rule 90 (ReturnStmt)
+    $default  reduce using rule 92 (ReturnStmt)
 
 
 State 117
@@ -1715,7 +1718,7 @@ State 117
    64     | Expr . _notequal Expr
    65     | Expr . _and Expr
    66     | Expr . _or Expr
-   89 ReturnStmt: _return Expr . _semicolon
+   91 ReturnStmt: _return Expr . _semicolon
 
     _plus            shift, and go to state 128
     _minus           shift, and go to state 129
@@ -1735,7 +1738,7 @@ State 117
 
 State 118
 
-   84 WhileStmt: _while _leftparen . Expr _rightparen Stmt
+   86 WhileStmt: _while _leftparen . Expr _rightparen Stmt
 
     _newarray         shift, and go to state 87
     _readln           shift, and go to state 89
@@ -2306,7 +2309,7 @@ State 149
    64     | Expr . _notequal Expr
    65     | Expr . _and Expr
    66     | Expr . _or Expr
-   86 ForOption: Expr .
+   88 ForOption: Expr .
 
     _plus            shift, and go to state 128
     _minus           shift, and go to state 129
@@ -2322,12 +2325,12 @@ State 149
     _or              shift, and go to state 139
     _greaterequal    shift, and go to state 141
 
-    $default  reduce using rule 86 (ForOption)
+    $default  reduce using rule 88 (ForOption)
 
 
 State 150
 
-   85 ForStmt: _for _leftparen ForOption . _semicolon Expr _semicolon ForOption _rightparen
+   87 ForStmt: _for _leftparen ForOption . _semicolon Expr _semicolon ForOption _rightparen
 
     _semicolon  shift, and go to state 177
 
@@ -2347,8 +2350,8 @@ State 151
    64     | Expr . _notequal Expr
    65     | Expr . _and Expr
    66     | Expr . _or Expr
-   82 IfStmt: _if _leftparen Expr . _rightparen Stmt
-   83       | _if _leftparen Expr . _rightparen Stmt _else Stmt
+   84 IfStmt: _if _leftparen Expr . _rightparen Stmt
+   85       | _if _leftparen Expr . _rightparen Stmt _else Stmt
 
     _plus            shift, and go to state 128
     _minus           shift, and go to state 129
@@ -2388,7 +2391,7 @@ State 153
    64     | Expr . _notequal Expr
    65     | Expr . _and Expr
    66     | Expr . _or Expr
-   91 PrintStmt: _println _leftparen Expr . PrintOption _rightparen _semicolon
+   93 PrintStmt: _println _leftparen Expr . PrintOption _rightparen _semicolon
 
     _plus            shift, and go to state 128
     _minus           shift, and go to state 129
@@ -2405,7 +2408,7 @@ State 153
     _comma           shift, and go to state 180
     _greaterequal    shift, and go to state 141
 
-    $default  reduce using rule 93 (PrintOption)
+    $default  reduce using rule 95 (PrintOption)
 
     PrintOption  go to state 181
 
@@ -2419,9 +2422,9 @@ State 154
 
 State 155
 
-   89 ReturnStmt: _return Expr _semicolon .
+   91 ReturnStmt: _return Expr _semicolon .
 
-    $default  reduce using rule 89 (ReturnStmt)
+    $default  reduce using rule 91 (ReturnStmt)
 
 
 State 156
@@ -2439,7 +2442,7 @@ State 156
    64     | Expr . _notequal Expr
    65     | Expr . _and Expr
    66     | Expr . _or Expr
-   84 WhileStmt: _while _leftparen Expr . _rightparen Stmt
+   86 WhileStmt: _while _leftparen Expr . _rightparen Stmt
 
     _plus            shift, and go to state 128
     _minus           shift, and go to state 129
@@ -2493,7 +2496,7 @@ State 159
    64     | Expr . _notequal Expr
    65     | Expr . _and Expr
    66     | Expr . _or Expr
-   77 Actuals: Expr .
+   77 Actuals: Expr . ActualHelper
 
     _plus            shift, and go to state 128
     _minus           shift, and go to state 129
@@ -2507,16 +2510,19 @@ State 159
     _notequal        shift, and go to state 137
     _and             shift, and go to state 138
     _or              shift, and go to state 139
+    _comma           shift, and go to state 186
     _greaterequal    shift, and go to state 141
 
-    $default  reduce using rule 77 (Actuals)
+    $default  reduce using rule 79 (ActualHelper)
+
+    ActualHelper  go to state 187
 
 
 State 160
 
    75 Call: _id _leftparen Actuals . _rightparen
 
-    _rightparen  shift, and go to state 186
+    _rightparen  shift, and go to state 188
 
 
 State 161
@@ -2548,7 +2554,7 @@ State 161
     _notequal        shift, and go to state 137
     _and             shift, and go to state 138
     _or              shift, and go to state 139
-    _rightbracket    shift, and go to state 187
+    _rightbracket    shift, and go to state 189
     _greaterequal    shift, and go to state 141
 
 
@@ -2920,7 +2926,7 @@ State 176
 
 State 177
 
-   85 ForStmt: _for _leftparen ForOption _semicolon . Expr _semicolon ForOption _rightparen
+   87 ForStmt: _for _leftparen ForOption _semicolon . Expr _semicolon ForOption _rightparen
 
     _newarray         shift, and go to state 87
     _readln           shift, and go to state 89
@@ -2933,7 +2939,7 @@ State 177
     _booleanconstant  shift, and go to state 37
     _id               shift, and go to state 95
 
-    Expr      go to state 188
+    Expr      go to state 190
     Lvalue    go to state 99
     Call      go to state 100
     Constant  go to state 101
@@ -2941,8 +2947,8 @@ State 177
 
 State 178
 
-   82 IfStmt: _if _leftparen Expr _rightparen . Stmt
-   83       | _if _leftparen Expr _rightparen . Stmt _else Stmt
+   84 IfStmt: _if _leftparen Expr _rightparen . Stmt
+   85       | _if _leftparen Expr _rightparen . Stmt _else Stmt
 
     _break            shift, and go to state 84
     _for              shift, and go to state 85
@@ -2965,7 +2971,7 @@ State 178
     $default  reduce using rule 48 (Stmt)
 
     StmtBlock   go to state 96
-    Stmt        go to state 189
+    Stmt        go to state 191
     Expr        go to state 98
     Lvalue      go to state 99
     Call        go to state 100
@@ -2988,12 +2994,12 @@ State 179
     _string   shift, and go to state 6
     _id       shift, and go to state 46
 
-    Type  go to state 190
+    Type  go to state 192
 
 
 State 180
 
-   92 PrintOption: _comma . Expr PrintOption
+   94 PrintOption: _comma . Expr PrintOption
 
     _newarray         shift, and go to state 87
     _readln           shift, and go to state 89
@@ -3006,7 +3012,7 @@ State 180
     _booleanconstant  shift, and go to state 37
     _id               shift, and go to state 95
 
-    Expr      go to state 191
+    Expr      go to state 193
     Lvalue    go to state 99
     Call      go to state 100
     Constant  go to state 101
@@ -3014,14 +3020,14 @@ State 180
 
 State 181
 
-   91 PrintStmt: _println _leftparen Expr PrintOption . _rightparen _semicolon
+   93 PrintStmt: _println _leftparen Expr PrintOption . _rightparen _semicolon
 
-    _rightparen  shift, and go to state 192
+    _rightparen  shift, and go to state 194
 
 
 State 182
 
-   84 WhileStmt: _while _leftparen Expr _rightparen . Stmt
+   86 WhileStmt: _while _leftparen Expr _rightparen . Stmt
 
     _break            shift, and go to state 84
     _for              shift, and go to state 85
@@ -3044,7 +3050,7 @@ State 182
     $default  reduce using rule 48 (Stmt)
 
     StmtBlock   go to state 96
-    Stmt        go to state 193
+    Stmt        go to state 195
     Expr        go to state 98
     Lvalue      go to state 99
     Call        go to state 100
@@ -3061,7 +3067,7 @@ State 183
 
    73 LHelper: _period . _id LHelper
 
-    _id  shift, and go to state 194
+    _id  shift, and go to state 196
 
 
 State 184
@@ -3082,7 +3088,7 @@ State 184
     Expr      go to state 159
     Lvalue    go to state 99
     Call      go to state 100
-    Actuals   go to state 195
+    Actuals   go to state 197
     Constant  go to state 101
 
 
@@ -3095,12 +3101,40 @@ State 185
 
 State 186
 
+   78 ActualHelper: _comma . Expr ActualHelper
+
+    _newarray         shift, and go to state 87
+    _readln           shift, and go to state 89
+    _minus            shift, and go to state 92
+    _not              shift, and go to state 93
+    _leftparen        shift, and go to state 94
+    _intconstant      shift, and go to state 34
+    _doubleconstant   shift, and go to state 35
+    _stringconstant   shift, and go to state 36
+    _booleanconstant  shift, and go to state 37
+    _id               shift, and go to state 95
+
+    Expr      go to state 198
+    Lvalue    go to state 99
+    Call      go to state 100
+    Constant  go to state 101
+
+
+State 187
+
+   77 Actuals: Expr ActualHelper .
+
+    $default  reduce using rule 77 (Actuals)
+
+
+State 188
+
    75 Call: _id _leftparen Actuals _rightparen .
 
     $default  reduce using rule 75 (Call)
 
 
-State 187
+State 189
 
    72 LHelper: _leftbracket Expr _rightbracket . LHelper
 
@@ -3109,10 +3143,10 @@ State 187
 
     $default  reduce using rule 74 (LHelper)
 
-    LHelper  go to state 196
+    LHelper  go to state 199
 
 
-State 188
+State 190
 
    53 Expr: Expr . _plus Expr
    54     | Expr . _minus Expr
@@ -3127,7 +3161,7 @@ State 188
    64     | Expr . _notequal Expr
    65     | Expr . _and Expr
    66     | Expr . _or Expr
-   85 ForStmt: _for _leftparen ForOption _semicolon Expr . _semicolon ForOption _rightparen
+   87 ForStmt: _for _leftparen ForOption _semicolon Expr . _semicolon ForOption _rightparen
 
     _plus            shift, and go to state 128
     _minus           shift, and go to state 129
@@ -3141,31 +3175,30 @@ State 188
     _notequal        shift, and go to state 137
     _and             shift, and go to state 138
     _or              shift, and go to state 139
-    _semicolon       shift, and go to state 197
+    _semicolon       shift, and go to state 200
     _greaterequal    shift, and go to state 141
 
 
-State 189
+State 191
 
-   82 IfStmt: _if _leftparen Expr _rightparen Stmt .
-   83       | _if _leftparen Expr _rightparen Stmt . _else Stmt
+   84 IfStmt: _if _leftparen Expr _rightparen Stmt .
+   85       | _if _leftparen Expr _rightparen Stmt . _else Stmt
 
-    _else  shift, and go to state 198
+    _else  shift, and go to state 201
 
-    _else     [reduce using rule 82 (IfStmt)]
-    $default  reduce using rule 82 (IfStmt)
+    $default  reduce using rule 84 (IfStmt)
 
 
-State 190
+State 192
 
    16 Type: Type . _leftbracket _rightbracket
    70 Expr: _newarray _leftparen _intconstant _comma Type . _rightparen
 
-    _rightparen   shift, and go to state 199
+    _rightparen   shift, and go to state 202
     _leftbracket  shift, and go to state 25
 
 
-State 191
+State 193
 
    53 Expr: Expr . _plus Expr
    54     | Expr . _minus Expr
@@ -3180,7 +3213,7 @@ State 191
    64     | Expr . _notequal Expr
    65     | Expr . _and Expr
    66     | Expr . _or Expr
-   92 PrintOption: _comma Expr . PrintOption
+   94 PrintOption: _comma Expr . PrintOption
 
     _plus            shift, and go to state 128
     _minus           shift, and go to state 129
@@ -3197,26 +3230,26 @@ State 191
     _comma           shift, and go to state 180
     _greaterequal    shift, and go to state 141
 
-    $default  reduce using rule 93 (PrintOption)
+    $default  reduce using rule 95 (PrintOption)
 
-    PrintOption  go to state 200
-
-
-State 192
-
-   91 PrintStmt: _println _leftparen Expr PrintOption _rightparen . _semicolon
-
-    _semicolon  shift, and go to state 201
-
-
-State 193
-
-   84 WhileStmt: _while _leftparen Expr _rightparen Stmt .
-
-    $default  reduce using rule 84 (WhileStmt)
+    PrintOption  go to state 203
 
 
 State 194
+
+   93 PrintStmt: _println _leftparen Expr PrintOption _rightparen . _semicolon
+
+    _semicolon  shift, and go to state 204
+
+
+State 195
+
+   86 WhileStmt: _while _leftparen Expr _rightparen Stmt .
+
+    $default  reduce using rule 86 (WhileStmt)
+
+
+State 196
 
    73 LHelper: _period _id . LHelper
 
@@ -3228,23 +3261,60 @@ State 194
     LHelper  go to state 185
 
 
-State 195
+State 197
 
    76 Call: _id _period _id _leftparen Actuals . _rightparen
 
-    _rightparen  shift, and go to state 202
+    _rightparen  shift, and go to state 205
 
 
-State 196
+State 198
+
+   53 Expr: Expr . _plus Expr
+   54     | Expr . _minus Expr
+   55     | Expr . _multiplication Expr
+   56     | Expr . _division Expr
+   57     | Expr . _mod Expr
+   59     | Expr . _less Expr
+   60     | Expr . _lessequal Expr
+   61     | Expr . _greater Expr
+   62     | Expr . _greaterequal Expr
+   63     | Expr . _equal Expr
+   64     | Expr . _notequal Expr
+   65     | Expr . _and Expr
+   66     | Expr . _or Expr
+   78 ActualHelper: _comma Expr . ActualHelper
+
+    _plus            shift, and go to state 128
+    _minus           shift, and go to state 129
+    _multiplication  shift, and go to state 130
+    _division        shift, and go to state 131
+    _mod             shift, and go to state 132
+    _less            shift, and go to state 133
+    _lessequal       shift, and go to state 134
+    _greater         shift, and go to state 135
+    _equal           shift, and go to state 136
+    _notequal        shift, and go to state 137
+    _and             shift, and go to state 138
+    _or              shift, and go to state 139
+    _comma           shift, and go to state 186
+    _greaterequal    shift, and go to state 141
+
+    $default  reduce using rule 79 (ActualHelper)
+
+    ActualHelper  go to state 206
+
+
+State 199
 
    72 LHelper: _leftbracket Expr _rightbracket LHelper .
 
     $default  reduce using rule 72 (LHelper)
 
 
-State 197
+State 200
 
-   85 ForStmt: _for _leftparen ForOption _semicolon Expr _semicolon . ForOption _rightparen
+   87 ForStmt: _for _leftparen ForOption _semicolon Expr _semicolon . ForOption _rightparen
 
     _newarray         shift, and go to state 87
     _readln           shift, and go to state 89
@@ -3257,18 +3327,18 @@ State 197
     _booleanconstant  shift, and go to state 37
     _id               shift, and go to state 95
 
-    $default  reduce using rule 87 (ForOption)
+    $default  reduce using rule 89 (ForOption)
 
     Expr       go to state 149
     Lvalue     go to state 99
     Call       go to state 100
     Constant   go to state 101
-    ForOption  go to state 203
+    ForOption  go to state 207
 
 
-State 198
+State 201
 
-   83 IfStmt: _if _leftparen Expr _rightparen Stmt _else . Stmt
+   85 IfStmt: _if _leftparen Expr _rightparen Stmt _else . Stmt
 
     _break            shift, and go to state 84
     _for              shift, and go to state 85
@@ -3291,7 +3361,7 @@ State 198
     $default  reduce using rule 48 (Stmt)
 
     StmtBlock   go to state 96
-    Stmt        go to state 204
+    Stmt        go to state 208
     Expr        go to state 98
     Lvalue      go to state 99
     Call        go to state 100
@@ -3304,50 +3374,57 @@ State 198
     PrintStmt   go to state 107
 
 
-State 199
+State 202
 
    70 Expr: _newarray _leftparen _intconstant _comma Type _rightparen .
 
     $default  reduce using rule 70 (Expr)
 
 
-State 200
+State 203
 
-   92 PrintOption: _comma Expr PrintOption .
+   94 PrintOption: _comma Expr PrintOption .
 
-    $default  reduce using rule 92 (PrintOption)
-
-
-State 201
-
-   91 PrintStmt: _println _leftparen Expr PrintOption _rightparen _semicolon .
-
-    $default  reduce using rule 91 (PrintStmt)
+    $default  reduce using rule 94 (PrintOption)
 
 
-State 202
+State 204
+
+   93 PrintStmt: _println _leftparen Expr PrintOption _rightparen _semicolon .
+
+    $default  reduce using rule 93 (PrintStmt)
+
+
+State 205
 
    76 Call: _id _period _id _leftparen Actuals _rightparen .
 
     $default  reduce using rule 76 (Call)
 
 
-State 203
+State 206
 
-   85 ForStmt: _for _leftparen ForOption _semicolon Expr _semicolon ForOption . _rightparen
+   78 ActualHelper: _comma Expr ActualHelper .
 
-    _rightparen  shift, and go to state 205
-
-
-State 204
-
-   83 IfStmt: _if _leftparen Expr _rightparen Stmt _else Stmt .
-
-    $default  reduce using rule 83 (IfStmt)
+    $default  reduce using rule 78 (ActualHelper)
 
 
-State 205
+State 207
 
-   85 ForStmt: _for _leftparen ForOption _semicolon Expr _semicolon ForOption _rightparen .
+   87 ForStmt: _for _leftparen ForOption _semicolon Expr _semicolon ForOption . _rightparen
 
-    $default  reduce using rule 85 (ForStmt)
+    _rightparen  shift, and go to state 209
+
+
+State 208
+
+   85 IfStmt: _if _leftparen Expr _rightparen Stmt _else Stmt .
+
+    $default  reduce using rule 85 (IfStmt)
+
+
+State 209
+
+   87 ForStmt: _for _leftparen ForOption _semicolon Expr _semicolon ForOption _rightparen .
+
+    $default  reduce using rule 87 (ForStmt)

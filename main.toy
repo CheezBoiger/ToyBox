@@ -1,0 +1,84 @@
+/*
+	Sample test
+	Dr. Dominick Atanasio
+
+	Authors: Mario Garcia, Michael Wallace
+
+	Testing Toy's Front end capabilities.
+*/
+
+//
+// Animal interface that describes cool animals mang....
+//
+//
+interface Animal {
+  int LevelUp();
+  double GetHeight();
+  string ConsumeFood(double x, double y, string z);
+
+  void Say();
+}
+
+/*
+  Neutral interface
+ */
+interface Neutral {
+  string GetItems();
+}
+
+
+interface Controllable {
+  int MoveX();
+  int MoveY();
+  int Inject(double x);
+}
+
+
+class Cat implements Animal {
+  int x;
+  int y;
+  boolean z;
+}
+
+
+class Kitten extends Cat implements Neutral, Controllable {
+  string name;
+  double age;
+    Animal[] allies;
+  double health;
+  
+  
+  int ConsumeFood(double x, double y, string z) {
+    allies = newarray(100, Animal);
+    
+    for (i = 0; i < x; i = i + 1) {
+      age = age + 1;
+    }
+    
+    if (age < 0) {
+      x.age = 12;
+    } else {
+      return 1;
+    }
+
+    return 11;
+  }
+
+  
+  void DoNothing(boolean nothing) {
+
+  }
+  
+
+}
+
+
+void main() {
+  Kitten kitten;
+  boolean ididit = true;
+  kitten.ConsumeFood(12.0, 12, "I like cats alot");
+
+  println("I am the almighty", kitten);
+}
+
+
